@@ -1,0 +1,93 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
+android {
+    compileSdkVersion 26
+
+    defaultConfig {
+        applicationId "com.zihuan1.app"
+        minSdkVersion 20
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions  {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    signingConfigs {//jks要放在app目录下
+        release {
+            storeFile file("debug.jks")
+            storePassword "android"
+            keyAlias "androiddebugkey"
+            keyPassword "android"
+        }
+        debug {
+            storeFile file("debug.jks")
+            storePassword "android"
+            keyAlias "androiddebugkey"
+            keyPassword "android"
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            outputFileName = "快速开发_${defaultConfig.versionName}_${releaseTime()}.apk"
+        }
+    }
+}
+
+def releaseTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+}
+
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.google.code.gson:gson:2.5'
+    implementation 'com.lzy.net:okhttputils:+'//可以单独使用，不需要依赖下方的扩展包
+//    implementation 'com.lzy.net:okhttpserver:+'//扩展了下载管理和上传管理，根据需要添加
+    implementation 'com.github.bumptech.glide:glide:3.5.2'
+    implementation 'org.greenrobot:eventbus:3.1.1'
+    //    沉浸式状态栏
+    implementation 'com.jaeger.statusbarutil:library:1.5.0'
+    //    权限
+    implementation 'com.github.dfqin:grantor:2.5'
+    //    dialog
+    implementation 'com.github.ForgetAll:LoadingDialog:v1.0.4'
+    //    rsa加密工具
+    implementation 'com.github.zihuan1:RSAUtils:1.0'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.2'
+//    导航栏
+    implementation 'com.github.ittianyu:BottomNavigationViewEx:1.2.4'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.makeramen:roundedimageview:2.3.0'
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-31'
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-31'//没有使用特殊Header，可以不加这行
+    //    多色值字符
+    implementation 'com.github.zihuan1:SpecialTextView:1.26'
+    implementation 'com.github.zihuan1:RecyclerAdapter:1.0'
+}
+configurations.all {
+
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+        if (requested.group == 'com.android.support') {
+            if (!requested.name.startsWith("multidex")) {
+                details.useVersion '26.0.1'//默认使用的版本
+            }
+        }
+    }
+}
+repositories {
+    mavenCentral()
+}
