@@ -5,22 +5,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.zihuan.app.library.MaterialDialog;
+import com.zihuan.app.library.ZHMDialog;
 
 public class MainActivity extends AppCompatActivity {
-    MaterialDialog materialDialog;
+    ZHMDialog ZHMDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        materialDialog = MaterialDialog.materialBuilder(this)
+        ZHMDialog = ZHMDialog.materialBuilder(this)
                 .setCancelText("取消")
                 .setConfirmText("确认")
                 .setTitle("提示o(∩_∩)o ")
                 .builder()
                 .show();
-        materialDialog.setOnDialogListener(new MaterialDialog.onDialogListener() {
+        ZHMDialog.setOnDialogListener(new ZHMDialog.onDialogListener() {
             @Override
             public void onConfirm(Dialog materialDialog, String etName) {
 
@@ -40,6 +40,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void showdialg(View view) {
-        materialDialog.show();
+        ZHMDialog.show();
     }
 }

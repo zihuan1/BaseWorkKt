@@ -18,7 +18,7 @@ import android.widget.TextView;
  * zihuan
  */
 
-public class MaterialDialog {
+public class ZHMDialog {
 
     public Dialog dialog;
 
@@ -36,11 +36,11 @@ public class MaterialDialog {
     private String confirmText = "", cancelText = "", otherlText = "";
 
 
-    public MaterialDialog() {
+    public ZHMDialog() {
 
     }
 
-    public MaterialDialog builder() {
+    public ZHMDialog builder() {
         buttonTextColor = ContextCompat.getColor(mContext, R.color.orange);
         dividerColor = buttonTextColor;
         bgcolor = ContextCompat.getColor(mContext, R.color.ffff);
@@ -55,25 +55,25 @@ public class MaterialDialog {
         lp.gravity = Gravity.CENTER;
         dialog.getWindow().setAttributes(lp);
         int sty = 0;
-        if (animType == MDialogAnimUtils.AnimLeft) {
+        if (animType == ZHMDAnimUtils.AnimLeft) {
             sty = R.style.AnimLeft;
-        } else if (animType == MDialogAnimUtils.AnimRight) {
+        } else if (animType == ZHMDAnimUtils.AnimRight) {
             sty = R.style.AnimRight;
-        } else if (animType == MDialogAnimUtils.AnimUp) {
+        } else if (animType == ZHMDAnimUtils.AnimUp) {
             sty = R.style.AnimUp;
 
-        } else if (animType == MDialogAnimUtils.AnimDown) {
+        } else if (animType == ZHMDAnimUtils.AnimDown) {
             sty = R.style.AnimDown;
 
-        } else if (animType == MDialogAnimUtils.AnimLeftRight) {
+        } else if (animType == ZHMDAnimUtils.AnimLeftRight) {
             sty = R.style.AnimLeftRight;
 
-        } else if (animType == MDialogAnimUtils.AnimUpDown) {
+        } else if (animType == ZHMDAnimUtils.AnimUpDown) {
             sty = R.style.AnimUpDown;
 
-        } else if (animType == MDialogAnimUtils.AnimFadeInOut) {
+        } else if (animType == ZHMDAnimUtils.AnimFadeInOut) {
             sty = R.style.AnimFadeInOut;
-        } else if (animType == MDialogAnimUtils.AnimZoomInOut) {
+        } else if (animType == ZHMDAnimUtils.AnimZoomInOut) {
             sty = R.style.AnimZoomInOut;
         }
         dialog.getWindow().getAttributes().windowAnimations = sty;
@@ -171,17 +171,17 @@ public class MaterialDialog {
     private onDialogListener dialogListener;
 
 
-    static MaterialDialog materialDialog;
+    static ZHMDialog ZHMDialog;
 
-    public MaterialDialog show() {
+    public ZHMDialog show() {
         dialog.show();
         return this;
     }
 
-    public static MaterialDialog materialBuilder(Context context) {
+    public static ZHMDialog materialBuilder(Context context) {
         mContext = context;
-        materialDialog = new MaterialDialog();
-        return materialDialog;
+        ZHMDialog = new ZHMDialog();
+        return ZHMDialog;
     }
 
     public void dismissDialog() {
@@ -190,69 +190,69 @@ public class MaterialDialog {
     }
 
 
-    public MaterialDialog setTitle(String title) {
+    public ZHMDialog setTitle(String title) {
         this.title = title;
         return this;
     }
 
-    public MaterialDialog content(String content) {
+    public ZHMDialog content(String content) {
         this.content = content;
         return this;
     }
 
     // 点击其他区域是否能取消
-    public MaterialDialog cancelable(boolean isCancelable, boolean isCancelableTouchOutside) {
+    public ZHMDialog cancelable(boolean isCancelable, boolean isCancelableTouchOutside) {
         this.isCancelable = isCancelable;
         this.isCancelableTouchOutside = isCancelableTouchOutside;
         return this;
     }
 
 
-    public MaterialDialog type(int type) {
+    public ZHMDialog type(int type) {
         this.type = type;
         return this;
     }
 
     //设置确定文字
-    public MaterialDialog setConfirmText(String confirmText) {
+    public ZHMDialog setConfirmText(String confirmText) {
         this.confirmText = confirmText;
         return this;
     }
 
     //设置取消文字
-    public MaterialDialog setCancelText(String cancelText) {
+    public ZHMDialog setCancelText(String cancelText) {
         this.cancelText = cancelText;
         return this;
     }
 
     //设置其他文字
-    public MaterialDialog setOtherText(String otherlText) {
+    public ZHMDialog setOtherText(String otherlText) {
         this.otherlText = otherlText;
         return this;
     }
 
     //设置监听
-    public MaterialDialog setOnDialogListener(onDialogListener ondialogListener) {
+    public ZHMDialog setOnDialogListener(onDialogListener ondialogListener) {
         this.dialogListener = ondialogListener;
         return this;
     }
 
-    public MaterialDialog setBackGround(int bgcolor) {
+    public ZHMDialog setBackGround(int bgcolor) {
         this.bgcolor = bgcolor;
         return this;
     }
 
-    public MaterialDialog animation(int animType) {
+    public ZHMDialog animation(int animType) {
         this.animType = animType;
         return this;
     }
 
-    public MaterialDialog color(int buttonTextColor) {
+    public ZHMDialog color(int buttonTextColor) {
         this.buttonTextColor = buttonTextColor;
         return this;
     }
 
-    public MaterialDialog divider(boolean isDivider, int dividerColor) {
+    public ZHMDialog divider(boolean isDivider, int dividerColor) {
         this.titleDivider = isDivider;
         this.dividerColor = dividerColor;
         return this;

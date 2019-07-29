@@ -1,7 +1,7 @@
 package com.zihuan.app.library;
 
 
-public class MDialogAnimUtils {
+public class ZHMDAnimUtils {
 
     /*
     Dialog enter from left, dismiss to left
