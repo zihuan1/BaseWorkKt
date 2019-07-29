@@ -20,7 +20,7 @@ import android.widget.TextView;
 
 public class ZHMDialog {
 
-    public Dialog dialog;
+    private Dialog dialog;
 
     private static Context mContext;
     private String title = "Title";
@@ -142,14 +142,16 @@ public class ZHMDialog {
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialogListener.onConfirm(dialog, editName.getText().toString());
+                if (dialogListener != null)
+                    dialogListener.onConfirm(dialog);
                 dialog.dismiss();
             }
         });
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialogListener.onCancel(dialog);
+                if (dialogListener != null)
+                    dialogListener.onCancel(dialog);
                 dialog.dismiss();
 
             }
@@ -157,7 +159,8 @@ public class ZHMDialog {
         tv_other.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialogListener.onOther(dialog);
+                if (dialogListener != null)
+                    dialogListener.onOther(dialog);
                 dialog.dismiss();
 
             }
@@ -174,6 +177,9 @@ public class ZHMDialog {
     static ZHMDialog ZHMDialog;
 
     public ZHMDialog show() {
+        if (dialog == null) {
+            builder();
+        }
         dialog.show();
         return this;
     }
@@ -194,6 +200,7 @@ public class ZHMDialog {
         this.title = title;
         return this;
     }
+
     public ZHMDialog setContent(String content) {
         this.content = content;
         return this;
@@ -261,7 +268,7 @@ public class ZHMDialog {
 
     public interface onDialogListener {
 
-        void onConfirm(Dialog materialDialog, String etName);
+        void onConfirm(Dialog materialDialog);
 
         void onCancel(Dialog materialDialog);
 
