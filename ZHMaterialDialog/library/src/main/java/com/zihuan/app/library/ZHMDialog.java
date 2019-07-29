@@ -194,11 +194,11 @@ public class ZHMDialog {
         this.title = title;
         return this;
     }
-
-    public ZHMDialog content(String content) {
+    public ZHMDialog setContent(String content) {
         this.content = content;
         return this;
     }
+
 
     // 点击其他区域是否能取消
     public ZHMDialog cancelable(boolean isCancelable, boolean isCancelableTouchOutside) {

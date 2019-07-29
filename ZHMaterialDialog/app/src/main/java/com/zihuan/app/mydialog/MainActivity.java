@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
                 .setCancelText("取消")
                 .setConfirmText("确认")
                 .setTitle("提示o(∩_∩)o ")
+                .setContent("你好")
                 .builder()
                 .show();
         ZHMDialog.setOnDialogListener(new ZHMDialog.onDialogListener() {
