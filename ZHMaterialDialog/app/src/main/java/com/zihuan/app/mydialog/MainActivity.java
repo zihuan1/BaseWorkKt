@@ -21,8 +21,9 @@ public class MainActivity extends AppCompatActivity {
                 .setContent("你好")
                 .show();
         ZHMDialog.setOnDialogListener(new ZHMDialog.onDialogListener() {
+
             @Override
-            public void onConfirm(Dialog materialDialog, String etName) {
+            public void onConfirm(Dialog materialDialog) {
 
             }
 
