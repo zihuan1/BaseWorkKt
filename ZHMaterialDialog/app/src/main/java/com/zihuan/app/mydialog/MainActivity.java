@@ -8,39 +8,25 @@ import android.view.View;
 import com.zihuan.app.library.ZHMDialog;
 
 public class MainActivity extends AppCompatActivity {
-    ZHMDialog ZHMDialog;
+    ZHMDialog mZHMDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ZHMDialog = ZHMDialog.materialBuilder(this)
+        mZHMDialog = ZHMDialog.materialBuilder(this)
                 .setCancelText("取消")
                 .setConfirmText("确认")
                 .setTitle("提示o(∩_∩)o ")
                 .setContent("你好")
                 .show();
-        ZHMDialog.setOnDialogListener(new ZHMDialog.onDialogListener() {
+        mZHMDialog.setOnDialogListener(new ZHMDialog.OnDialogImp(){
 
-            @Override
-            public void onConfirm(Dialog materialDialog) {
-
-            }
-
-            @Override
-            public void onCancel(Dialog materialDialog) {
-
-            }
-
-            @Override
-            public void onOther(Dialog materialDialog) {
-
-            }
         });
     }
 
 
     public void showdialg(View view) {
-        ZHMDialog.show();
+        mZHMDialog.show();
     }
 }
