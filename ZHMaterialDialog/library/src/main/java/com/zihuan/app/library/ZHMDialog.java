@@ -276,5 +276,22 @@ public class ZHMDialog {
 
     }
 
+    public class OnDialogImp implements onDialogListener{
+
+        @Override
+        public void onConfirm(Dialog materialDialog) {
+
+        }
+
+        @Override
+        public void onCancel(Dialog materialDialog) {
+
+        }
+
+        @Override
+        public void onOther(Dialog materialDialog) {
+
+        }
+    }
 
 }
