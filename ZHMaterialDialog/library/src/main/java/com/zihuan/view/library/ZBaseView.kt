@@ -19,10 +19,9 @@ abstract class ZBaseView : FrameLayout, OnConfirmListener {
     protected var textOk = ""
     protected var textNo = ""
     protected var textOther = ""
-    protected lateinit var mView: View
     private fun createView() {
-        mView = View.inflate(context, getLayoutId(), null)
-        addView(mView)
+        val view = View.inflate(context, getLayoutId(), null)
+        addView(view)
         if (isInEditMode) return
         initView()
     }

@@ -47,7 +47,7 @@ public class ZDialog {
         bgcolor = ContextCompat.getColor(mContext, android.R.color.white);
         dialog = new Dialog(mContext);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        View view = LayoutInflater.from(mContext).inflate(R.layout.layout_dialog, null);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.layout_z_def_dialog, null);
         dialog.setContentView(view);
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
         lp.copyFrom(dialog.getWindow().getAttributes());
@@ -79,9 +79,9 @@ public class ZDialog {
         }
         dialog.getWindow().getAttributes().windowAnimations = sty;
 
-        TextView txtTitle = view.findViewById(R.id.txtTitle);
-        TextView txtContent = view.findViewById(R.id.txtContent);
-        TextView btnConfirm = view.findViewById(R.id.tvOk);
+        TextView txtTitle = view.findViewById(R.id.tv_title);
+        TextView txtContent = view.findViewById(R.id.tv_content);
+        TextView btnConfirm = view.findViewById(R.id.tv_ok);
         TextView btnCancel = view.findViewById(R.id.tv_no);
         TextView tv_other = view.findViewById(R.id.tv_other);
         RelativeLayout rl_background = view.findViewById(R.id.rl_background);
