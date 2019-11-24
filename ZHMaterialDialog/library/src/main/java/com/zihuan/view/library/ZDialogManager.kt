@@ -1,6 +1,6 @@
 package com.zihuan.view.library
 
-object ZDialogManage {
+object ZDialogManager {
 
 
     /** 默认动画*/

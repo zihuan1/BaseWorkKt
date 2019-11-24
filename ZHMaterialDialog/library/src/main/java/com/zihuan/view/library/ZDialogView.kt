@@ -10,18 +10,18 @@ class ZDialogView(context: Context) : ZBaseView(context) {
 
 
     //    标题
-    var title = ZDialogManage.textTitle
+    var title = ZDialogManager.textTitle
     //    内容
     var content = ""
     var type = ZHDialogType.DEFAULT
     //是否显示标题线
     var titleDivider = false
     //线段颜色 背景色
-    var dividerColor = ZDialogManage.textColor
+    var dividerColor = ZDialogManager.textColor
         get() = context.run { resources.getColor(field) }
-    var buttonTextColor = ZDialogManage.buttonColor
+    var buttonTextColor = ZDialogManager.buttonColor
         get() = context.run { resources.getColor(field) }
-    var bgcolor = ZDialogManage.backgroundColor
+    var bgcolor = ZDialogManager.backgroundColor
         get() = context.run { resources.getColor(field) }
 
     override fun getLayoutId() = R.layout.layout_z_def_dialog

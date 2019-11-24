@@ -19,7 +19,7 @@ import com.zihuan.view.library.ZHAnimUtils.AnimUpDown
 
 class ZDialogKt<T : ZBaseView> {
 
-    private var animType = ZDialogManage.defAnim
+    private var animType = ZDialogManager.defAnim
     private lateinit var dialogBuild: AlertDialog.Builder
     private lateinit var dialog: Dialog
     private var mBaseDialog: ZBaseView? = null
@@ -45,15 +45,15 @@ class ZDialogKt<T : ZBaseView> {
                 else -> R.style.AnimZoomInOut
             }
             mBaseDialog?.dialog = this
-            setCancelable(ZDialogManage.isCancelable)
-            setCanceledOnTouchOutside(ZDialogManage.isCancelableTouchOutside)
+            setCancelable(ZDialogManager.isCancelable)
+            setCanceledOnTouchOutside(ZDialogManager.isCancelableTouchOutside)
         }
     }
 
     /***
      * 是否可取消
      */
-    fun cancelable(isCancelable: Boolean = ZDialogManage.isCancelable): ZDialogKt<T> {
+    fun cancelable(isCancelable: Boolean = ZDialogManager.isCancelable): ZDialogKt<T> {
         dialog.setCancelable(isCancelable)
         return this
     }
@@ -61,7 +61,7 @@ class ZDialogKt<T : ZBaseView> {
     /**
      * 点击外部区域是否可取消
      */
-    fun outside(isCancelableTouchOutside: Boolean = ZDialogManage.isCancelableTouchOutside): ZDialogKt<T> {
+    fun outside(isCancelableTouchOutside: Boolean = ZDialogManager.isCancelableTouchOutside): ZDialogKt<T> {
         dialog.setCanceledOnTouchOutside(isCancelableTouchOutside)
         return this
     }
