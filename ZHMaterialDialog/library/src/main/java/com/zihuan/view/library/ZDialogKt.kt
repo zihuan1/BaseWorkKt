@@ -46,7 +46,7 @@ class ZDialogKt<T : ZBaseView> {
             }
             mBaseDialog?.dialog = this
             setCancelable(ZDialogManage.isCancelable)
-            setCanceledOnTouchOutside(ZDialogManage.isCancelable)
+            setCanceledOnTouchOutside(ZDialogManage.isCancelableTouchOutside)
         }
     }
 
