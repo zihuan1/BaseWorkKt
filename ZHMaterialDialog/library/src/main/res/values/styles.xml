@@ -1,7 +1,5 @@
 <resources>
 
-
-
     <style name="AnimLeft">
         <item name="android:windowEnterAnimation">@anim/from_left</item>
         <item name="android:windowExitAnimation">@anim/to_left</item>

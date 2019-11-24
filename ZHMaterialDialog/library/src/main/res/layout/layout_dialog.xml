@@ -4,9 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    android:orientation="vertical"
     android:padding="15dp">
-
 
     <TextView
         android:id="@+id/txtTitle"
@@ -58,7 +56,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/rl_content"
         android:layout_marginTop="20dp"
-        android:layout_toLeftOf="@+id/tv_clare"
+        android:layout_toLeftOf="@+id/tv_no"
         android:gravity="center"
         android:padding="16dp"
         android:text="其他"
@@ -67,12 +65,12 @@
         android:visibility="gone" />
 
     <TextView
-        android:id="@+id/tv_clare"
+        android:id="@+id/tv_no"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/rl_content"
         android:layout_marginTop="20dp"
-        android:layout_toLeftOf="@+id/tv_yes"
+        android:layout_toLeftOf="@+id/tv_ok"
         android:gravity="center"
         android:padding="16dp"
         android:text="取消"
@@ -80,7 +78,7 @@
         android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/tv_yes"
+        android:id="@+id/tv_ok"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/rl_content"

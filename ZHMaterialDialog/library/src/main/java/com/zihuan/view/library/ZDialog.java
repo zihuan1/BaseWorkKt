@@ -1,4 +1,4 @@
-package com.zihuan.app.library;
+package com.zihuan.view.library;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -15,10 +15,11 @@ import android.widget.TextView;
 
 
 /**
- * zihuan
+ * 自定义dialog
+ * @author zihuan
  */
 
-public class ZHMDialog {
+public class ZDialog {
 
     private Dialog dialog;
 
@@ -36,14 +37,14 @@ public class ZHMDialog {
     private String confirmText = "", cancelText = "", otherlText = "";
 
 
-    public ZHMDialog() {
+    public ZDialog() {
 
     }
 
-    public ZHMDialog builder() {
+    public ZDialog builder() {
         buttonTextColor = ContextCompat.getColor(mContext, R.color.orange);
         dividerColor = buttonTextColor;
-        bgcolor = ContextCompat.getColor(mContext, R.color.ffff);
+        bgcolor = ContextCompat.getColor(mContext, android.R.color.white);
         dialog = new Dialog(mContext);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         View view = LayoutInflater.from(mContext).inflate(R.layout.layout_dialog, null);
@@ -55,33 +56,33 @@ public class ZHMDialog {
         lp.gravity = Gravity.CENTER;
         dialog.getWindow().setAttributes(lp);
         int sty = 0;
-        if (animType == ZHMDAnimUtils.AnimLeft) {
+        if (animType == ZHAnimUtils.INSTANCE.getAnimLeft()) {
             sty = R.style.AnimLeft;
-        } else if (animType == ZHMDAnimUtils.AnimRight) {
+        } else if (animType == ZHAnimUtils.INSTANCE.getAnimRight()) {
             sty = R.style.AnimRight;
-        } else if (animType == ZHMDAnimUtils.AnimUp) {
+        } else if (animType == ZHAnimUtils.INSTANCE.getAnimUp()) {
             sty = R.style.AnimUp;
 
-        } else if (animType == ZHMDAnimUtils.AnimDown) {
+        } else if (animType == ZHAnimUtils.INSTANCE.getAnimDown()) {
             sty = R.style.AnimDown;
 
-        } else if (animType == ZHMDAnimUtils.AnimLeftRight) {
+        } else if (animType == ZHAnimUtils.INSTANCE.getAnimLeftRight()) {
             sty = R.style.AnimLeftRight;
 
-        } else if (animType == ZHMDAnimUtils.AnimUpDown) {
+        } else if (animType == ZHAnimUtils.INSTANCE.getAnimUpDown()) {
             sty = R.style.AnimUpDown;
 
-        } else if (animType == ZHMDAnimUtils.AnimFadeInOut) {
+        } else if (animType == ZHAnimUtils.INSTANCE.getAnimFadeInOut()) {
             sty = R.style.AnimFadeInOut;
-        } else if (animType == ZHMDAnimUtils.AnimZoomInOut) {
+        } else if (animType == ZHAnimUtils.INSTANCE.getAnimZoomInOut()) {
             sty = R.style.AnimZoomInOut;
         }
         dialog.getWindow().getAttributes().windowAnimations = sty;
 
         TextView txtTitle = view.findViewById(R.id.txtTitle);
         TextView txtContent = view.findViewById(R.id.txtContent);
-        TextView btnConfirm = view.findViewById(R.id.tv_yes);
-        TextView btnCancel = view.findViewById(R.id.tv_clare);
+        TextView btnConfirm = view.findViewById(R.id.tv_ok);
+        TextView btnCancel = view.findViewById(R.id.tv_no);
         TextView tv_other = view.findViewById(R.id.tv_other);
         RelativeLayout rl_background = view.findViewById(R.id.rl_background);
         final EditText editName = view.findViewById(R.id.et_name);
@@ -174,9 +175,9 @@ public class ZHMDialog {
     private onDialogListener dialogListener;
 
 
-    static ZHMDialog ZHMDialog;
+    static ZDialog ZDialog;
 
-    public ZHMDialog show() {
+    public ZDialog show() {
         if (dialog == null) {
             builder();
         }
@@ -184,10 +185,10 @@ public class ZHMDialog {
         return this;
     }
 
-    public static ZHMDialog materialBuilder(Context context) {
+    public static ZDialog materialBuilder(Context context) {
         mContext = context;
-        ZHMDialog = new ZHMDialog();
-        return ZHMDialog;
+        ZDialog = new ZDialog();
+        return ZDialog;
     }
 
     public void dismissDialog() {
@@ -196,70 +197,70 @@ public class ZHMDialog {
     }
 
 
-    public ZHMDialog setTitle(String title) {
+    public ZDialog setTitle(String title) {
         this.title = title;
         return this;
     }
 
-    public ZHMDialog setContent(String content) {
+    public ZDialog setContent(String content) {
         this.content = content;
         return this;
     }
 
 
     // 点击其他区域是否能取消
-    public ZHMDialog cancelable(boolean isCancelable, boolean isCancelableTouchOutside) {
+    public ZDialog cancelable(boolean isCancelable, boolean isCancelableTouchOutside) {
         this.isCancelable = isCancelable;
         this.isCancelableTouchOutside = isCancelableTouchOutside;
         return this;
     }
 
 
-    public ZHMDialog type(int type) {
+    public ZDialog type(int type) {
         this.type = type;
         return this;
     }
 
     //设置确定文字
-    public ZHMDialog setConfirmText(String confirmText) {
+    public ZDialog setConfirmText(String confirmText) {
         this.confirmText = confirmText;
         return this;
     }
 
     //设置取消文字
-    public ZHMDialog setCancelText(String cancelText) {
+    public ZDialog setCancelText(String cancelText) {
         this.cancelText = cancelText;
         return this;
     }
 
     //设置其他文字
-    public ZHMDialog setOtherText(String otherlText) {
+    public ZDialog setOtherText(String otherlText) {
         this.otherlText = otherlText;
         return this;
     }
 
     //设置监听
-    public ZHMDialog setOnDialogListener(onDialogListener ondialogListener) {
+    public ZDialog setOnDialogListener(onDialogListener ondialogListener) {
         this.dialogListener = ondialogListener;
         return this;
     }
 
-    public ZHMDialog setBackGround(int bgcolor) {
+    public ZDialog setBackGround(int bgcolor) {
         this.bgcolor = bgcolor;
         return this;
     }
 
-    public ZHMDialog animation(int animType) {
+    public ZDialog animation(int animType) {
         this.animType = animType;
         return this;
     }
 
-    public ZHMDialog color(int buttonTextColor) {
+    public ZDialog color(int buttonTextColor) {
         this.buttonTextColor = buttonTextColor;
         return this;
     }
 
-    public ZHMDialog divider(boolean isDivider, int dividerColor) {
+    public ZDialog divider(boolean isDivider, int dividerColor) {
         this.titleDivider = isDivider;
         this.dividerColor = dividerColor;
         return this;
