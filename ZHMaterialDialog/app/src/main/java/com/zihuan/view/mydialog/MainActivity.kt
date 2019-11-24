@@ -2,6 +2,7 @@ package com.zihuan.view.mydialog
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.zihuan.utils.vhlibrary.VShow
 import com.zihuan.view.library.*
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.alert
@@ -40,6 +41,7 @@ class MainActivity : AppCompatActivity() {
         tv_yes.setOnClickListener {
             dialog.show()
         }
+        tv_yes.VShow()
         alert {
 
         }
