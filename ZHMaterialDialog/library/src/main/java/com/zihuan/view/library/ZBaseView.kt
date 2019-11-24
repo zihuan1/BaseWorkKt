@@ -10,19 +10,23 @@ abstract class ZBaseView : FrameLayout, OnConfirmListener {
         createView()
     }
 
-    abstract fun initView()
     abstract fun getLayoutId(): Int
+    abstract fun initView()
+    abstract fun initData()
 
     protected var mZhListenerImp = ZDialogListenerImp()
     internal var dialog: Dialog? = null
     protected var textOk = ""
     protected var textNo = ""
     protected var textOther = ""
+    protected lateinit var mView: View
     private fun createView() {
-        var view = View.inflate(context, getLayoutId(), null)
-        addView(view)
+        mView = View.inflate(context, getLayoutId(), null)
+        addView(mView)
         if (isInEditMode) return
+        initView()
     }
+
 
     override fun onPositive(text: String, onClicked: () -> Unit) {
         textOk = text

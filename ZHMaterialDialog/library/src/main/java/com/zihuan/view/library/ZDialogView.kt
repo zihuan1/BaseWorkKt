@@ -1,12 +1,16 @@
 package com.zihuan.view.library
 
 import android.content.Context
-import kotlinx.android.synthetic.main.layout_dialog.view.*
+import android.view.View
+import android.widget.EditText
+import android.widget.TextView
 
 /**
  * 默认提供的view
  */
 class ZDialogView(context: Context) : ZBaseView(context) {
+
+
     //    标题
     var title = ZDialogManage.textTitle
     //    内容
@@ -21,9 +25,35 @@ class ZDialogView(context: Context) : ZBaseView(context) {
         get() = context.run { resources.getColor(field) }
     var bgcolor = ZDialogManage.backgroundColor
         get() = context.run { resources.getColor(field) }
-
+    lateinit var txtTitle: TextView
+    lateinit var txtContent: TextView
+    lateinit var tv_ok: TextView
+    lateinit var tv_no: TextView
+    lateinit var tv_other: TextView
+    lateinit var title_lin: View
+    lateinit var rl_background: View
+    lateinit var et_name: EditText
     override fun getLayoutId() = R.layout.layout_dialog
     override fun initView() {
+        txtTitle = mView.findViewById(R.id.txtTitle)
+        txtContent = mView.findViewById<TextView>(R.id.txtContent)
+        tv_ok = mView.findViewById<TextView>(R.id.tv_ok)
+        tv_no = mView.findViewById<TextView>(R.id.tv_no)
+        tv_other = mView.findViewById<TextView>(R.id.tv_other)
+          title_lin = mView.findViewById<View>(R.id.title_lin)
+          rl_background = mView.findViewById<View>(R.id.rl_background)
+          et_name = mView.findViewById<EditText>(R.id.et_name)
+        tv_ok.setOnClickListener {
+            mZhListenerImp.performOk()
+        }
+        tv_no.setOnClickListener {
+            mZhListenerImp.performNo()
+        }
+        tv_other.setOnClickListener {
+            mZhListenerImp.performOther()
+        }
+    }
+    override fun initData() {
         tv_ok.setTextColor(buttonTextColor)
         tv_no.setTextColor(buttonTextColor)
         txtTitle.setTextColor(buttonTextColor)
@@ -45,15 +75,6 @@ class ZDialogView(context: Context) : ZBaseView(context) {
         tv_no.ZVShow { textNo.isEmpty() }.text = textNo
         tv_other.ZVShow { textOther.isEmpty() }.text = textOther
         title_lin.visibility = if (titleDivider) VISIBLE else GONE
-        tv_ok.setOnClickListener {
-            mZhListenerImp.performOk()
-        }
-        tv_no.setOnClickListener {
-            mZhListenerImp.performNo()
-        }
-        tv_other.setOnClickListener {
-            mZhListenerImp.performOther()
-        }
     }
 
 }

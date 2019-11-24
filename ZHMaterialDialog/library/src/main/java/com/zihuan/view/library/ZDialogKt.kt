@@ -82,7 +82,7 @@ class ZDialogKt<T : ZBaseView> {
      *显示dialog
      */
     fun show(): ZDialogKt<T> {
-        mBaseDialog?.initView()
+        mBaseDialog?.initData()
         dialog.show()
         return this
     }
