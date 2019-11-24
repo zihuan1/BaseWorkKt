@@ -37,7 +37,7 @@ class ZDialogView(context: Context) : ZBaseView(context) {
     override fun initView() {
         txtTitle = mView.findViewById(R.id.txtTitle)
         txtContent = mView.findViewById<TextView>(R.id.txtContent)
-        tv_ok = mView.findViewById<TextView>(R.id.tv_ok)
+        tv_ok = mView.findViewById<TextView>(R.id.tvOk)
         tv_no = mView.findViewById<TextView>(R.id.tv_no)
         tv_other = mView.findViewById<TextView>(R.id.tv_other)
           title_lin = mView.findViewById<View>(R.id.title_lin)

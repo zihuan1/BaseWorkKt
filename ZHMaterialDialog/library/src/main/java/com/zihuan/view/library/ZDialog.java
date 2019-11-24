@@ -81,7 +81,7 @@ public class ZDialog {
 
         TextView txtTitle = view.findViewById(R.id.txtTitle);
         TextView txtContent = view.findViewById(R.id.txtContent);
-        TextView btnConfirm = view.findViewById(R.id.tv_ok);
+        TextView btnConfirm = view.findViewById(R.id.tvOk);
         TextView btnCancel = view.findViewById(R.id.tv_no);
         TextView tv_other = view.findViewById(R.id.tv_other);
         RelativeLayout rl_background = view.findViewById(R.id.rl_background);
