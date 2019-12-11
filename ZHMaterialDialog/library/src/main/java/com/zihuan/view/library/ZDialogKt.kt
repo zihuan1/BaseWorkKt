@@ -14,7 +14,7 @@ import com.zihuan.view.library.ZHAnimUtils.AnimUpDown
 
 /**
  *  可配置的dialog,无侵入式代码
- * @author zihuan
+ * @author Zihuan
  */
 
 class ZDialogKt<T : ZBaseView> {

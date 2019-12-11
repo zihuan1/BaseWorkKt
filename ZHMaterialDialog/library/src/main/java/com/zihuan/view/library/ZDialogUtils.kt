@@ -59,6 +59,12 @@ enum class ZHDialogType {
 }
 
 
+inline fun <T : ZBaseView> Context.zAlert(view: T, noinline init: T.() -> Unit) =
+        ZDialogKt<T>(this).apply {
+            setView(view)
+            init(getView())
+        }
+
 inline fun <T : ZBaseView> Context.zAlert(noinline init: T.() -> Unit) = ZDialogKt<T>(this).apply { init(getView()) }
 
 inline fun <T : ZBaseView> Fragment.zAlert(noinline init: T.() -> Unit) = context?.zAlert(init)
