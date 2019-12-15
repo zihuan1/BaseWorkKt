@@ -1,3 +1,3 @@
  dependencies {
-    implementation 'com.github.zihuan1:MaterialDialog:1.0'
+    	        implementation 'com.github.zihuan1:view-grace-dialog:latest.integration'
 }
