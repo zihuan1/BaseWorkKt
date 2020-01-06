@@ -2,9 +2,9 @@ package com.zihuan.view.library;
 
 
 public class ZDialogListenerImp {
-    ZDialogListener mPositiveListener;
-    ZDialogListener mNegativeListener;
-    ZDialogListener mNeutralListener;
+    public ZDialogListener mPositiveListener;
+    public  ZDialogListener mNegativeListener;
+    public  ZDialogListener mNeutralListener;
 
     public void setOkButton(ZDialogListener clickListener) {
         mPositiveListener = clickListener;

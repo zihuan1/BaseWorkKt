@@ -4,9 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.zihuan.utils.vhlibrary.VShow
 import com.zihuan.view.library.*
-import com.zihuan.view.library.ZHAnimUtils.AnimLeft
 import kotlinx.android.synthetic.main.activity_main.*
-import org.jetbrains.anko.alert
 import org.jetbrains.anko.toast
 
 class MainActivity : AppCompatActivity() {
@@ -40,12 +38,13 @@ class MainActivity : AppCompatActivity() {
                 toast("otherButton")
             }
         }.show()
-        tv_yes.setOnClickListener {
+        tv_1.setOnClickListener {
             dialog.show()
         }
-        tv_yes.VShow()
-        alert {
+        tv_2.setOnClickListener {
+            zAlert(SendView(this)) {
 
+            }.show()
         }
     }
 

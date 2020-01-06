@@ -8,7 +8,6 @@ import kotlinx.android.synthetic.main.layout_z_def_dialog.view.*
  */
 class ZDialogView(context: Context) : ZBaseView(context) {
 
-
     //    标题
     var title = ZDialogManager.textTitle
     //    内容
@@ -75,7 +74,7 @@ class ZDialogView(context: Context) : ZBaseView(context) {
         tv_ok.ZVShow { textOk.isNotEmpty() || okButtonShow }.text = textOk
         tv_no.ZVShow { textOk.isNotEmpty() || noButtonShow }.text = textNo
         tv_other.ZVShow { textOther.isNotEmpty() || otherButtonShow }.text = textOther
-        title_lin.visibility = if (titleDivider) VISIBLE else GONE
+        title_lin.ZVShow { titleDivider }
     }
 
 }

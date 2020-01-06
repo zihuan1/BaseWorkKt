@@ -27,12 +27,12 @@ class ZDialogKt<T : ZBaseView> {
 
     constructor(context: Context) {
         mContext = context
-        builder()
     }
 
     private fun builder() {
         dialogBuild = AlertDialog.Builder(mContext)
         checkView()
+        dialogBuild.setView(mBaseDialog)
         dialog = dialogBuild.create().apply {
             window.attributes.windowAnimations = when (animType) {
                 AnimLeft -> R.style.AnimLeft
@@ -44,10 +44,19 @@ class ZDialogKt<T : ZBaseView> {
                 AnimFadeInOut -> R.style.AnimFadeInOut
                 else -> R.style.AnimZoomInOut
             }
+//            //重置宽高
+//            var viewInfo = mBaseDialog!!.layoutParams
+//            var info = window.attributes
+//            info.width = viewInfo.width!!
+//            info.height  = viewInfo.height!!
             mBaseDialog?.dialog = this
             setCancelable(ZDialogManager.isCancelable)
             setCanceledOnTouchOutside(ZDialogManager.isCancelableTouchOutside)
         }
+    }
+
+    private fun ResetTheWideHigh() {
+        var viewInfo = mBaseDialog?.layoutParams
     }
 
     /***
@@ -76,7 +85,10 @@ class ZDialogKt<T : ZBaseView> {
     /**
      * 获取当前view
      */
-    fun getView() = mBaseDialog as T
+    fun getView(): T {
+        builder()
+        return mBaseDialog as T
+    }
 
     /**
      *显示dialog
@@ -101,7 +113,6 @@ class ZDialogKt<T : ZBaseView> {
     private fun checkView() {
         if (null == mBaseDialog) {
             mBaseDialog = ZDialogView(mContext)
-            dialogBuild.setView(mBaseDialog)
         }
     }
 }

@@ -15,7 +15,7 @@ abstract class ZBaseView : FrameLayout, OnConfirmListener {
     abstract fun initData()
 
     protected var mZhListenerImp = ZDialogListenerImp()
-    internal var dialog: Dialog? = null
+    var dialog: Dialog? = null
     protected var textOk = ZDialogManager.textOk
     protected var textNo = ZDialogManager.textNo
     protected var textOther = ZDialogManager.textOther
