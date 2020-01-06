@@ -90,4 +90,4 @@ inline fun OnConfirmListener.okButton(text: String = ZDialogManager.textOk, noin
 inline fun OnConfirmListener.noButton(text: String = ZDialogManager.textNo, noinline handler: () -> Unit) = onNegative(text, handler)
 inline fun OnConfirmListener.otherButton(text: String = ZDialogManager.textOther, noinline handler: () -> Unit) = onNeutral(text, handler)
 
-internal fun <T : View> T.ZVShow(term: () -> Boolean) = apply { visibility = if (!term()) View.VISIBLE else View.GONE }
+internal fun <T : View> T.ZVShow(term: () -> Boolean) = apply { visibility = if (term()) View.VISIBLE else View.GONE }

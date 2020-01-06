@@ -24,6 +24,10 @@ class ZDialogView(context: Context) : ZBaseView(context) {
     var bgcolor = ZDialogManager.backgroundColor
         get() = context.run { resources.getColor(field) }
 
+    var okButtonShow = false
+    var noButtonShow = false
+    var otherButtonShow = false
+
     override fun getLayoutId() = R.layout.layout_z_def_dialog
     override fun initView() {
         tv_ok.setOnClickListener {
@@ -35,6 +39,7 @@ class ZDialogView(context: Context) : ZBaseView(context) {
         tv_other.setOnClickListener {
             mZhListenerImp.performOther()
         }
+
     }
 
     override fun initData() {
@@ -55,9 +60,9 @@ class ZDialogView(context: Context) : ZBaseView(context) {
         rl_background.setBackgroundColor(bgcolor)
         tv_title.text = title
         tv_content.text = content
-        tv_ok.ZVShow { textOk.isEmpty() }.text = textOk
-        tv_no.ZVShow { textNo.isEmpty() }.text = textNo
-        tv_other.ZVShow { textOther.isEmpty() }.text = textOther
+        tv_ok.ZVShow { textOk.isNotEmpty() || noButtonShow }.text = textOk
+        tv_no.ZVShow { textNo.isNotEmpty() || noButtonShow }.text = textNo
+        tv_other.ZVShow { textOther.isNotEmpty() || otherButtonShow }.text = textOther
         title_lin.visibility = if (titleDivider) VISIBLE else GONE
     }
 
