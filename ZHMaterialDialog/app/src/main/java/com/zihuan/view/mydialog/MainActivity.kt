@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.zihuan.utils.vhlibrary.VShow
 import com.zihuan.view.library.*
+import com.zihuan.view.library.ZHAnimUtils.AnimLeft
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.alert
 import org.jetbrains.anko.toast
@@ -28,12 +29,13 @@ class MainActivity : AppCompatActivity() {
         var dialog = defZAlert {
             title = "hello kotlin"
             content = "kt😄"
+            noButtonShow = true
             okButton("确认") {
                 toast("okButton")
             }
-            noButton {
-                toast("noButton")
-            }
+//            noButton {
+//                toast("noButton")
+//            }
             otherButton {
                 toast("otherButton")
             }

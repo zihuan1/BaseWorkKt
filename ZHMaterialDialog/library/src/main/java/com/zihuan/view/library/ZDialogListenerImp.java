@@ -19,14 +19,17 @@ public class ZDialogListenerImp {
     }
 
     public void performOk() {
-        mPositiveListener.onClick();
+        if (mPositiveListener != null)
+            mPositiveListener.onClick();
     }
 
     public void performNo() {
-        mNegativeListener.onClick();
+        if (mNegativeListener != null)
+            mNegativeListener.onClick();
     }
 
     public void performOther() {
-        mNeutralListener.onClick();
+        if (mNeutralListener != null)
+            mNeutralListener.onClick();
     }
 }

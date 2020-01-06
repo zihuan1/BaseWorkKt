@@ -9,7 +9,7 @@ object ZDialogManager {
     /**默认标题**/
     var textTitle = ""
     /**默认按钮文案**/
-    var textOk = ""
+    var textOk = "确定"
     /**默认按钮文案**/
     var textNo = "取消"
     /**默认按钮文案**/

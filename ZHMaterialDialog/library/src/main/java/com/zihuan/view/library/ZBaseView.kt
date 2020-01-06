@@ -16,9 +16,9 @@ abstract class ZBaseView : FrameLayout, OnConfirmListener {
 
     protected var mZhListenerImp = ZDialogListenerImp()
     internal var dialog: Dialog? = null
-    protected var textOk = ""
-    protected var textNo = ""
-    protected var textOther = ""
+    protected var textOk = ZDialogManager.textOk
+    protected var textNo = ZDialogManager.textNo
+    protected var textOther = ZDialogManager.textOther
     private fun createView() {
         val view = View.inflate(context, getLayoutId(), null)
         addView(view)
