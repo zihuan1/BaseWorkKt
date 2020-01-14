@@ -70,8 +70,8 @@ class ZDialogKt<T : ZBaseView> {
     /**
      * 点击外部区域是否可取消
      */
-    fun outside(isCancelableTouchOutside: Boolean = ZDialogManager.isCancelableTouchOutside): ZDialogKt<T> {
-        dialog.setCanceledOnTouchOutside(isCancelableTouchOutside)
+    fun outside(outside: Boolean = ZDialogManager.isCancelableTouchOutside): ZDialogKt<T> {
+        dialog.setCanceledOnTouchOutside(outside)
         return this
     }
 
@@ -84,6 +84,7 @@ class ZDialogKt<T : ZBaseView> {
 
     /**
      * 获取当前view
+     * reified
      */
     fun getView(): T {
         builder()

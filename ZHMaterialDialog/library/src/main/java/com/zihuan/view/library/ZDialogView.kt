@@ -23,6 +23,9 @@ class ZDialogView(context: Context) : ZBaseView(context) {
     var bgcolor = ZDialogManager.backgroundColor
         get() = context.run { resources.getColor(field) }
 
+    var contentColor = ZDialogManager.textColor
+        get() = context.run { resources.getColor(field) }
+
     var okButtonShow = false
     var noButtonShow = false
     var otherButtonShow = false
@@ -64,9 +67,10 @@ class ZDialogView(context: Context) : ZBaseView(context) {
                 et_name.visibility = VISIBLE
             }
         }
-        tv_ok.setTextColor(buttonTextColor)
-        tv_no.setTextColor(buttonTextColor)
         tv_title.setTextColor(buttonTextColor)
+        tv_content.setTextColor(contentColor)
+        tv_no.setTextColor(buttonTextColor)
+        tv_ok.setTextColor(buttonTextColor)
         title_lin.setBackgroundColor(dividerColor)
         rl_background.setBackgroundColor(bgcolor)
         tv_title.text = title
