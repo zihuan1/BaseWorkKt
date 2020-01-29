@@ -81,4 +81,5 @@ class ZDialogView(context: Context) : ZBaseView(context) {
         title_lin.ZVShow { titleDivider }
     }
 
+    fun getEditText() = et_name.text.toString()
 }

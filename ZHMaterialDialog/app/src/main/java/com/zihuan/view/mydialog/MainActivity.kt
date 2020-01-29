@@ -2,7 +2,6 @@ package com.zihuan.view.mydialog
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.zihuan.utils.vhlibrary.VShow
 import com.zihuan.view.library.*
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.toast
@@ -28,7 +27,9 @@ class MainActivity : AppCompatActivity() {
             title = "hello kotlin"
             content = "kt😄"
             noButtonShow = true
+//            type=ZHDialogType.EDIT
             okButton("确认") {
+//                toast(getEditText())
                 toast("okButton")
             }
 //            noButton {
