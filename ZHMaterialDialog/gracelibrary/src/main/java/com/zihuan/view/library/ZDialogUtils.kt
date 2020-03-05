@@ -1,7 +1,7 @@
 package com.zihuan.view.library
 
 import android.content.Context
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.view.View
 
 /***
@@ -67,14 +67,14 @@ inline fun <T : ZBaseView> Context.zAlert(view: T, noinline init: T.() -> Unit) 
 
 inline fun <T : ZBaseView> Context.zAlert(noinline init: T.() -> Unit) = ZDialogKt<T>(this).apply { init(getView()) }
 
-inline fun <T : ZBaseView> Fragment.zAlert(noinline init: T.() -> Unit) = context?.zAlert(init)
+inline fun <T : ZBaseView> androidx.fragment.app.Fragment.zAlert(noinline init: T.() -> Unit) = context?.zAlert(init)
 
 inline fun <T : ZBaseView> View.zAlert(noinline init: T.() -> Unit) = context?.zAlert(init)
 
 /**默认的扩展方法*/
 inline fun Context.defZAlert(noinline init: ZDialogView.() -> Unit) = zAlert(init)
 
-inline fun Fragment.defZAlert(noinline init: ZDialogView.() -> Unit) = zAlert(init)
+inline fun androidx.fragment.app.Fragment.defZAlert(noinline init: ZDialogView.() -> Unit) = zAlert(init)
 
 inline fun View.defZAlert(noinline init: ZDialogView.() -> Unit) = zAlert(init)
 
