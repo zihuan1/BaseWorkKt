@@ -1,5 +1,5 @@
 package com.zihuan.view.library;
 
-public interface ZDialogListener {
+public interface GraceAlertListener {
     void onClick();
 }

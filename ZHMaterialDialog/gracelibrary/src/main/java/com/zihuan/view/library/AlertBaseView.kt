@@ -5,7 +5,10 @@ import android.content.Context
 import android.view.View
 import android.widget.FrameLayout
 
-abstract class ZBaseView : FrameLayout, OnConfirmListener {
+/**
+ * view基类
+ */
+abstract class AlertBaseView : FrameLayout, OnConfirmListener {
     constructor(context: Context) : super(context) {
         createView()
     }
@@ -14,11 +17,11 @@ abstract class ZBaseView : FrameLayout, OnConfirmListener {
     abstract fun initView()
     abstract fun initData()
 
-    protected var mZhListenerImp = ZDialogListenerImp()
+    protected var mZhListenerImp = GraceAlertListenerImp()
     var dialog: Dialog? = null
-    protected var textOk = ZDialogManager.textOk
-    protected var textNo = ZDialogManager.textNo
-    protected var textOther = ZDialogManager.textOther
+    protected var textOk = GraceAlertManager.textOk
+    protected var textNo = GraceAlertManager.textNo
+    protected var textOther = GraceAlertManager.textOther
     private fun createView() {
         val view = View.inflate(context, getLayoutId(), null)
         addView(view)

@@ -1,20 +1,20 @@
 package com.zihuan.view.library;
 
 
-public class ZDialogListenerImp {
-    public ZDialogListener mPositiveListener;
-    public  ZDialogListener mNegativeListener;
-    public  ZDialogListener mNeutralListener;
+public class GraceAlertListenerImp {
+    public GraceAlertListener mPositiveListener;
+    public GraceAlertListener mNegativeListener;
+    public GraceAlertListener mNeutralListener;
 
-    public void setOkButton(ZDialogListener clickListener) {
+    public void setOkButton(GraceAlertListener clickListener) {
         mPositiveListener = clickListener;
     }
 
-    public void setNoButton(ZDialogListener clickListener) {
+    public void setNoButton(GraceAlertListener clickListener) {
         mNegativeListener = clickListener;
     }
 
-    public void setOtherButton(ZDialogListener clickListener) {
+    public void setOtherButton(GraceAlertListener clickListener) {
         mNeutralListener = clickListener;
     }
 

@@ -7,23 +7,23 @@ import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.toast
 
 class MainActivity : AppCompatActivity() {
-    lateinit var mZDialog: ZDialog
+    lateinit var mZDialog: GraceAlert
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 //        传统用法
-        mZDialog = ZDialog.materialBuilder(this)
+        mZDialog = GraceAlert.materialBuilder(this)
                 .setCancelText("取消")
                 .setConfirmText("确认")
                 .setTitle("提示o(∩_∩)o ")
                 .setContent("你好")
 //                .show()
-        mZDialog.setOnDialogListener(object : ZDialog.OnDialogImp() {
+        mZDialog.setOnDialogListener(object : GraceAlert.OnDialogImp() {
 
         })
         //        kotlin风格用法
-        var dialog = defZAlert {
+        var dialog = defAlert {
             title = "hello kotlin"
             content = "kt😄"
             noButtonShow = true
@@ -43,9 +43,10 @@ class MainActivity : AppCompatActivity() {
             dialog.show()
         }
         tv_2.setOnClickListener {
-            zAlert(SendView(this)) {
+            graceAlert<SendView> {
 
-            }.show()
+            }.cancelable(false)
+                    .show()
         }
     }
 

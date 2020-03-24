@@ -3,13 +3,13 @@ package com.zihuan.view.library
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
-import com.zihuan.view.library.ZHAnimUtils.AnimDown
-import com.zihuan.view.library.ZHAnimUtils.AnimFadeInOut
-import com.zihuan.view.library.ZHAnimUtils.AnimLeft
-import com.zihuan.view.library.ZHAnimUtils.AnimLeftRight
-import com.zihuan.view.library.ZHAnimUtils.AnimRight
-import com.zihuan.view.library.ZHAnimUtils.AnimUp
-import com.zihuan.view.library.ZHAnimUtils.AnimUpDown
+import com.zihuan.view.library.GraceAlertUtils.AnimDown
+import com.zihuan.view.library.GraceAlertUtils.AnimFadeInOut
+import com.zihuan.view.library.GraceAlertUtils.AnimLeft
+import com.zihuan.view.library.GraceAlertUtils.AnimLeftRight
+import com.zihuan.view.library.GraceAlertUtils.AnimRight
+import com.zihuan.view.library.GraceAlertUtils.AnimUp
+import com.zihuan.view.library.GraceAlertUtils.AnimUpDown
 
 
 /**
@@ -17,12 +17,12 @@ import com.zihuan.view.library.ZHAnimUtils.AnimUpDown
  * @author Zihuan
  */
 
-class ZDialogKt<T : ZBaseView> {
+class GraceAlertKt<T : AlertBaseView> {
 
-    private var animType = ZDialogManager.defAnim
+    private var animType = GraceAlertManager.defAnim
     private lateinit var dialogBuild: AlertDialog.Builder
     private lateinit var dialog: Dialog
-    private var mBaseDialog: ZBaseView? = null
+    private lateinit var mBaseDialog: T
     private var mContext: Context
 
     constructor(context: Context) {
@@ -31,7 +31,6 @@ class ZDialogKt<T : ZBaseView> {
 
     private fun builder() {
         dialogBuild = AlertDialog.Builder(mContext)
-        checkView()
         dialogBuild.setView(mBaseDialog)
         dialog = dialogBuild.create().apply {
             window.attributes.windowAnimations = when (animType) {
@@ -44,25 +43,20 @@ class ZDialogKt<T : ZBaseView> {
                 AnimFadeInOut -> R.style.AnimFadeInOut
                 else -> R.style.AnimZoomInOut
             }
-//            //重置宽高
-//            var viewInfo = mBaseDialog!!.layoutParams
-//            var info = window.attributes
-//            info.width = viewInfo.width!!
-//            info.height  = viewInfo.height!!
             mBaseDialog?.dialog = this
-            setCancelable(ZDialogManager.isCancelable)
-            setCanceledOnTouchOutside(ZDialogManager.isCancelableTouchOutside)
+            setCancelable(GraceAlertManager.isCancelable)
+            setCanceledOnTouchOutside(GraceAlertManager.isCancelableTouchOutside)
         }
     }
 
-    private fun ResetTheWideHigh() {
+    private fun resetTheWideHigh() {
         var viewInfo = mBaseDialog?.layoutParams
     }
 
     /***
      * 是否可取消
      */
-    fun cancelable(isCancelable: Boolean = ZDialogManager.isCancelable): ZDialogKt<T> {
+    fun cancelable(isCancelable: Boolean = GraceAlertManager.isCancelable): GraceAlertKt<T> {
         dialog.setCancelable(isCancelable)
         return this
     }
@@ -70,7 +64,7 @@ class ZDialogKt<T : ZBaseView> {
     /**
      * 点击外部区域是否可取消
      */
-    fun outside(outside: Boolean = ZDialogManager.isCancelableTouchOutside): ZDialogKt<T> {
+    fun outside(outside: Boolean = GraceAlertManager.isCancelableTouchOutside): GraceAlertKt<T> {
         dialog.setCanceledOnTouchOutside(outside)
         return this
     }
@@ -78,8 +72,9 @@ class ZDialogKt<T : ZBaseView> {
     /**
      * 设置自定义view
      */
-    fun setView(view: ZBaseView) {
+    fun setView(view: T) {
         mBaseDialog = view
+        builder()
     }
 
     /**
@@ -87,14 +82,13 @@ class ZDialogKt<T : ZBaseView> {
      * reified
      */
     fun getView(): T {
-        builder()
-        return mBaseDialog as T
+        return mBaseDialog
     }
 
     /**
      *显示dialog
      */
-    fun show(): ZDialogKt<T> {
+    fun show(): GraceAlertKt<T> {
         mBaseDialog?.initData()
         dialog.show()
         return this
@@ -103,18 +97,9 @@ class ZDialogKt<T : ZBaseView> {
     /**
      *隐藏dialog
      */
-    fun dismiss(): ZDialogKt<T> {
+    fun dismiss(): GraceAlertKt<T> {
         dialog.dismiss()
         return this
-    }
-
-    /***
-     * 如果没有自定义view则使用默认view
-     */
-    private fun checkView() {
-        if (null == mBaseDialog) {
-            mBaseDialog = ZDialogView(mContext)
-        }
     }
 }
 

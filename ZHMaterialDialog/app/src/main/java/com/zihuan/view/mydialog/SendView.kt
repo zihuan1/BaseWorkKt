@@ -1,10 +1,10 @@
 package com.zihuan.view.mydialog
 
 import android.content.Context
-import com.zihuan.view.library.ZBaseView
+import com.zihuan.view.library.AlertBaseView
 import kotlinx.android.synthetic.main.dialog_send_view.view.*
 
-class SendView(context: Context) : ZBaseView(context) {
+class SendView(context: Context) : AlertBaseView(context) {
 
     var logisticsName = ""
     var logisticsSku = ""

@@ -2,7 +2,9 @@ package com.zihuan.view.library;
 
 import android.app.Dialog;
 import android.content.Context;
+
 import androidx.core.content.ContextCompat;
+
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -16,10 +18,11 @@ import android.widget.TextView;
 
 /**
  * 自定义dialog
+ *
  * @author zihuan
  */
 
-public class ZDialog {
+public class GraceAlert {
 
     private Dialog dialog;
 
@@ -37,11 +40,11 @@ public class ZDialog {
     private String confirmText = "", cancelText = "", otherlText = "";
 
 
-    public ZDialog() {
+    public GraceAlert() {
 
     }
 
-    public ZDialog builder() {
+    public GraceAlert builder() {
         buttonTextColor = ContextCompat.getColor(mContext, R.color.orange);
         dividerColor = buttonTextColor;
         bgcolor = ContextCompat.getColor(mContext, android.R.color.white);
@@ -56,25 +59,21 @@ public class ZDialog {
         lp.gravity = Gravity.CENTER;
         dialog.getWindow().setAttributes(lp);
         int sty = 0;
-        if (animType == ZHAnimUtils.INSTANCE.getAnimLeft()) {
+        if (animType == GraceAlertUtils.AnimLeft) {
             sty = R.style.AnimLeft;
-        } else if (animType == ZHAnimUtils.INSTANCE.getAnimRight()) {
+        } else if (animType == GraceAlertUtils.AnimRight) {
             sty = R.style.AnimRight;
-        } else if (animType == ZHAnimUtils.INSTANCE.getAnimUp()) {
+        } else if (animType == GraceAlertUtils.AnimUp) {
             sty = R.style.AnimUp;
-
-        } else if (animType == ZHAnimUtils.INSTANCE.getAnimDown()) {
+        } else if (animType == GraceAlertUtils.AnimDown) {
             sty = R.style.AnimDown;
-
-        } else if (animType == ZHAnimUtils.INSTANCE.getAnimLeftRight()) {
+        } else if (animType == GraceAlertUtils.AnimLeftRight) {
             sty = R.style.AnimLeftRight;
-
-        } else if (animType == ZHAnimUtils.INSTANCE.getAnimUpDown()) {
+        } else if (animType == GraceAlertUtils.AnimUpDown) {
             sty = R.style.AnimUpDown;
-
-        } else if (animType == ZHAnimUtils.INSTANCE.getAnimFadeInOut()) {
+        } else if (animType == GraceAlertUtils.AnimFadeInOut) {
             sty = R.style.AnimFadeInOut;
-        } else if (animType == ZHAnimUtils.INSTANCE.getAnimZoomInOut()) {
+        } else if (animType == GraceAlertUtils.AnimZoomInOut) {
             sty = R.style.AnimZoomInOut;
         }
         dialog.getWindow().getAttributes().windowAnimations = sty;
@@ -175,9 +174,9 @@ public class ZDialog {
     private onDialogListener dialogListener;
 
 
-    static ZDialog ZDialog;
+    static GraceAlert GraceAlert;
 
-    public ZDialog show() {
+    public GraceAlert show() {
         if (dialog == null) {
             builder();
         }
@@ -185,10 +184,10 @@ public class ZDialog {
         return this;
     }
 
-    public static ZDialog materialBuilder(Context context) {
+    public static GraceAlert materialBuilder(Context context) {
         mContext = context;
-        ZDialog = new ZDialog();
-        return ZDialog;
+        GraceAlert = new GraceAlert();
+        return GraceAlert;
     }
 
     public void dismissDialog() {
@@ -197,70 +196,70 @@ public class ZDialog {
     }
 
 
-    public ZDialog setTitle(String title) {
+    public GraceAlert setTitle(String title) {
         this.title = title;
         return this;
     }
 
-    public ZDialog setContent(String content) {
+    public GraceAlert setContent(String content) {
         this.content = content;
         return this;
     }
 
 
     // 点击其他区域是否能取消
-    public ZDialog cancelable(boolean isCancelable, boolean isCancelableTouchOutside) {
+    public GraceAlert cancelable(boolean isCancelable, boolean isCancelableTouchOutside) {
         this.isCancelable = isCancelable;
         this.isCancelableTouchOutside = isCancelableTouchOutside;
         return this;
     }
 
 
-    public ZDialog type(int type) {
+    public GraceAlert type(int type) {
         this.type = type;
         return this;
     }
 
     //设置确定文字
-    public ZDialog setConfirmText(String confirmText) {
+    public GraceAlert setConfirmText(String confirmText) {
         this.confirmText = confirmText;
         return this;
     }
 
     //设置取消文字
-    public ZDialog setCancelText(String cancelText) {
+    public GraceAlert setCancelText(String cancelText) {
         this.cancelText = cancelText;
         return this;
     }
 
     //设置其他文字
-    public ZDialog setOtherText(String otherlText) {
+    public GraceAlert setOtherText(String otherlText) {
         this.otherlText = otherlText;
         return this;
     }
 
     //设置监听
-    public ZDialog setOnDialogListener(onDialogListener ondialogListener) {
+    public GraceAlert setOnDialogListener(onDialogListener ondialogListener) {
         this.dialogListener = ondialogListener;
         return this;
     }
 
-    public ZDialog setBackGround(int bgcolor) {
+    public GraceAlert setBackGround(int bgcolor) {
         this.bgcolor = bgcolor;
         return this;
     }
 
-    public ZDialog animation(int animType) {
+    public GraceAlert animation(int animType) {
         this.animType = animType;
         return this;
     }
 
-    public ZDialog color(int buttonTextColor) {
+    public GraceAlert color(int buttonTextColor) {
         this.buttonTextColor = buttonTextColor;
         return this;
     }
 
-    public ZDialog divider(boolean isDivider, int dividerColor) {
+    public GraceAlert divider(boolean isDivider, int dividerColor) {
         this.titleDivider = isDivider;
         this.dividerColor = dividerColor;
         return this;
@@ -277,7 +276,7 @@ public class ZDialog {
 
     }
 
-    public static class OnDialogImp implements onDialogListener{
+    public static class OnDialogImp implements onDialogListener {
 
         @Override
         public void onConfirm(Dialog materialDialog) {
