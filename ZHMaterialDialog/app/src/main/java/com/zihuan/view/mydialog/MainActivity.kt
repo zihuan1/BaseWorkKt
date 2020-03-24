@@ -27,7 +27,6 @@ class MainActivity : AppCompatActivity() {
             title = "hello kotlin"
             content = "kt😄"
             noButtonShow = true
-//            type=ZHDialogType.EDIT
             okButton("确认") {
 //                toast(getEditText())
                 toast("okButton")
@@ -45,8 +44,7 @@ class MainActivity : AppCompatActivity() {
         tv_2.setOnClickListener {
             graceAlert<SendView> {
 
-            }.cancelable(false)
-                    .show()
+            }.show()
         }
     }
 

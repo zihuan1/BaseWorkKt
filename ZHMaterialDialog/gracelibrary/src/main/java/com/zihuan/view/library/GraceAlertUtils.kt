@@ -59,6 +59,9 @@ enum class AlertType {
     EDIT
 }
 
+/**
+ * 自定义View
+ */
 inline fun <reified T : AlertBaseView> Context.graceAlert(noinline init: T.() -> Unit) =
         GraceAlertKt<T>(this).apply {
             val view = T::class.java.getDeclaredConstructor(Context::class.java).newInstance(this@graceAlert)
