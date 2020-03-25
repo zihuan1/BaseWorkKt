@@ -71,6 +71,7 @@ class GraceAlertKt<T : AlertBaseView> {
 
     /**
      * 设置自定义view
+     *
      */
     fun setView(view: T) {
         mBaseDialog = view
