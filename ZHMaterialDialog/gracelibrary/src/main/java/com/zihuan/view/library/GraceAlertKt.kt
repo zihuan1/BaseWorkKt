@@ -43,15 +43,14 @@ class GraceAlertKt<T : AlertBaseView> {
                 AnimFadeInOut -> R.style.AnimFadeInOut
                 else -> R.style.AnimZoomInOut
             }
+
             mBaseDialog?.dialog = this
             setCancelable(GraceAlertManager.isCancelable)
             setCanceledOnTouchOutside(GraceAlertManager.isCancelableTouchOutside)
         }
+
     }
 
-    private fun resetTheWideHigh() {
-        var viewInfo = mBaseDialog?.layoutParams
-    }
 
     /***
      * 是否可取消
@@ -92,6 +91,10 @@ class GraceAlertKt<T : AlertBaseView> {
     fun show(): GraceAlertKt<T> {
         mBaseDialog?.initData()
         dialog.show()
+        //换成自定义view 舍去dialog
+//        if (mBaseDialog.resetWidth) {
+//            resetWidth()
+//        }
         return this
     }
 
@@ -101,6 +104,15 @@ class GraceAlertKt<T : AlertBaseView> {
     fun dismiss(): GraceAlertKt<T> {
         dialog.dismiss()
         return this
+    }
+
+    /**
+     * 设置自定义的宽度
+     */
+    private fun resetWidth() {
+        val params = dialog.window.attributes
+        params.width = 200
+        dialog.window.attributes = params
     }
 }
 

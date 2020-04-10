@@ -17,6 +17,11 @@ abstract class AlertBaseView : FrameLayout, OnConfirmListener {
     abstract fun initView()
     abstract fun initData()
 
+    /**
+     * 重置宽高
+     */
+    var resetWidth = false
+    var resetHeight= false
     protected var mZhListenerImp = GraceAlertListenerImp()
     var dialog: Dialog? = null
     protected var textOk = GraceAlertManager.textOk

@@ -29,11 +29,8 @@ class GraceAlertView(context: Context) : AlertBaseView(context) {
         get() = context.run { resources.getColor(field) }
 
     var titleSize = GraceAlertManager.titleSize
-        get() = dip(field)
     var contentSize = GraceAlertManager.contentSize
-        get() = dip(field)
     var buttonSize = GraceAlertManager.buttonSize
-        get() = dip(field)
 
     var contentColor = GraceAlertManager.textColor
         get() = context.run { resources.getColor(field) }

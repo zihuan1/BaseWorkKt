@@ -1,10 +1,12 @@
 package com.zihuan.view.mydialog
 
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.zihuan.view.library.*
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.toast
+
 
 class MainActivity : AppCompatActivity() {
     lateinit var mZDialog: GraceAlert
@@ -43,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         }
         tv_2.setOnClickListener {
             graceAlert<SendView> {
-
+//                resetWidth = true
             }.show()
         }
     }
