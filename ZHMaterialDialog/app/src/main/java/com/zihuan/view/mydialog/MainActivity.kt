@@ -1,6 +1,5 @@
 package com.zihuan.view.mydialog
 
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.zihuan.view.library.*
@@ -39,7 +38,7 @@ class MainActivity : AppCompatActivity() {
             otherButton {
                 toast("otherButton")
             }
-        }.show()
+        }
         tv_1.setOnClickListener {
             dialog.show()
         }

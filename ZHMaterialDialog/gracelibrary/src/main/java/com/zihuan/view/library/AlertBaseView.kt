@@ -1,6 +1,5 @@
 package com.zihuan.view.library
 
-import android.app.Dialog
 import android.content.Context
 import android.view.View
 import android.widget.FrameLayout
@@ -18,15 +17,23 @@ abstract class AlertBaseView : FrameLayout, OnConfirmListener {
     abstract fun initData()
 
     /**
-     * 重置宽高
+     * 左右边距默认20dp
      */
-    var resetWidth = false
-    var resetHeight= false
+    var marginLeft = 20f
+        get() = dip2px(context, field)
+    var marginRight = 20f
+        get() = dip2px(context, field)
+
+    var backGround = R.color.color_halfTransparent
+        get() = context.resources.getColor(field)
     protected var mZhListenerImp = GraceAlertListenerImp()
-    var dialog: Dialog? = null
+
+    var dialog: GraceAlertParentView? = null
+
     protected var textOk = GraceAlertManager.textOk
     protected var textNo = GraceAlertManager.textNo
     protected var textOther = GraceAlertManager.textOther
+
     private fun createView() {
         val view = View.inflate(context, getLayoutId(), null)
         addView(view)

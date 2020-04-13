@@ -1,7 +1,10 @@
 package com.zihuan.view.library
 
+import android.app.Activity
 import android.content.Context
+import android.util.DisplayMetrics
 import android.view.View
+
 
 /***
  * 动画
@@ -93,3 +96,30 @@ inline fun OnConfirmListener.noButton(text: String = GraceAlertManager.textNo, n
 inline fun OnConfirmListener.otherButton(text: String = GraceAlertManager.textOther, noinline handler: () -> Unit) = onNeutral(text, handler)
 
 internal fun <T : View> T.ZVShow(term: () -> Boolean) = apply { visibility = if (term()) View.VISIBLE else View.GONE }
+
+
+/**
+ * 根据手机的分辨率从 dp 的单位 转成为 px(像素)
+ */
+fun dip2px(context: Context, dpValue: Float): Float {
+    val scale = context.resources.displayMetrics.density
+    return (dpValue * scale + 0.5f)
+}
+
+/**
+ * 根据手机的分辨率从 px(像素) 的单位 转成为 dp
+ */
+fun px2dip(context: Context, pxValue: Float): Int {
+    val scale = context.resources.displayMetrics.density
+    return (pxValue / scale + 0.5f).toInt()
+}
+
+/**
+ * 获取屏幕宽度
+ */
+fun getScreenWidth(context: Activity): Int {
+    val outMetrics = DisplayMetrics()
+    context.windowManager.defaultDisplay.getRealMetrics(outMetrics)
+    //    val heightPixel = outMetrics.heightPixels
+    return outMetrics.widthPixels
+}

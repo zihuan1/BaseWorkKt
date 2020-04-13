@@ -1,7 +1,7 @@
 package com.zihuan.view.library
 
 import android.content.Context
-import kotlinx.android.synthetic.main.layout_z_def_dialog.view.*
+import kotlinx.android.synthetic.main.layout_def_dialog.view.*
 
 /**
  * 默认的view
@@ -23,8 +23,8 @@ class GraceAlertView(context: Context) : AlertBaseView(context) {
         get() = context.run { resources.getColor(field) }
     var buttonTextColor = GraceAlertManager.buttonColor
         get() = context.run { resources.getColor(field) }
-    var bgcolor = GraceAlertManager.backgroundColor
-        get() = context.run { resources.getColor(field) }
+//    var bgcolor = GraceAlertManager.backgroundColor
+//        get() = context.run { resources.getColor(field) }
     var titleColor = GraceAlertManager.titleColor
         get() = context.run { resources.getColor(field) }
 
@@ -40,7 +40,7 @@ class GraceAlertView(context: Context) : AlertBaseView(context) {
     var otherButtonShow = false
     private fun dip(value: Float) = (value * resources.displayMetrics.density)
 
-    override fun getLayoutId() = R.layout.layout_z_def_dialog
+    override fun getLayoutId() = R.layout.layout_def_dialog
     override fun initView() {
         tv_ok.setOnClickListener {
             if (mZhListenerImp.mPositiveListener != null) {
@@ -82,7 +82,7 @@ class GraceAlertView(context: Context) : AlertBaseView(context) {
         tv_no.setTextColor(buttonTextColor)
         tv_ok.setTextColor(buttonTextColor)
         title_lin.setBackgroundColor(dividerColor)
-        rl_background.setBackgroundColor(bgcolor)
+//        rl_background.setBackgroundColor(bgcolor)
         tv_title.text = title
         tv_content.text = content
         tv_title.textSize = titleSize

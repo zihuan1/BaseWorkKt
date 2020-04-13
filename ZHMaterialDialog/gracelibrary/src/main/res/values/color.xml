@@ -2,5 +2,6 @@
 <resources>
     <color name="orange">#FF5412</color>
     <color name="color_3333">#333333</color>
+    <color name="color_halfTransparent">#80000000</color>
 
 </resources>

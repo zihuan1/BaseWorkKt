@@ -2,9 +2,6 @@ package com.zihuan.view.library;
 
 import android.app.Dialog;
 import android.content.Context;
-
-import androidx.core.content.ContextCompat;
-
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -14,6 +11,8 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.core.content.ContextCompat;
 
 
 /**
@@ -50,7 +49,7 @@ public class GraceAlert {
         bgcolor = ContextCompat.getColor(mContext, android.R.color.white);
         dialog = new Dialog(mContext);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        View view = LayoutInflater.from(mContext).inflate(R.layout.layout_z_def_dialog, null);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.layout_def_dialog, null);
         dialog.setContentView(view);
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
         lp.copyFrom(dialog.getWindow().getAttributes());
@@ -59,24 +58,24 @@ public class GraceAlert {
         lp.gravity = Gravity.CENTER;
         dialog.getWindow().setAttributes(lp);
         int sty = 0;
-        if (animType == GraceAlertUtils.AnimLeft) {
-            sty = R.style.AnimLeft;
-        } else if (animType == GraceAlertUtils.AnimRight) {
-            sty = R.style.AnimRight;
-        } else if (animType == GraceAlertUtils.AnimUp) {
-            sty = R.style.AnimUp;
-        } else if (animType == GraceAlertUtils.AnimDown) {
-            sty = R.style.AnimDown;
-        } else if (animType == GraceAlertUtils.AnimLeftRight) {
-            sty = R.style.AnimLeftRight;
-        } else if (animType == GraceAlertUtils.AnimUpDown) {
-            sty = R.style.AnimUpDown;
-        } else if (animType == GraceAlertUtils.AnimFadeInOut) {
-            sty = R.style.AnimFadeInOut;
-        } else if (animType == GraceAlertUtils.AnimZoomInOut) {
-            sty = R.style.AnimZoomInOut;
-        }
-        dialog.getWindow().getAttributes().windowAnimations = sty;
+//        if (animType == GraceAlertUtils.AnimLeft) {
+//            sty = R.style.AnimLeft;
+//        } else if (animType == GraceAlertUtils.AnimRight) {
+//            sty = R.style.AnimRight;
+//        } else if (animType == GraceAlertUtils.AnimUp) {
+//            sty = R.style.AnimUp;
+//        } else if (animType == GraceAlertUtils.AnimDown) {
+//            sty = R.style.AnimDown;
+//        } else if (animType == GraceAlertUtils.AnimLeftRight) {
+//            sty = R.style.AnimLeftRight;
+//        } else if (animType == GraceAlertUtils.AnimUpDown) {
+//            sty = R.style.AnimUpDown;
+//        } else if (animType == GraceAlertUtils.AnimFadeInOut) {
+//            sty = R.style.AnimFadeInOut;
+//        } else if (animType == GraceAlertUtils.AnimZoomInOut) {
+//            sty = R.style.AnimZoomInOut;
+//        }
+//        dialog.getWindow().getAttributes().windowAnimations = sty;
 
         TextView txtTitle = view.findViewById(R.id.tv_title);
         TextView txtContent = view.findViewById(R.id.tv_content);
