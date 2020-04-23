@@ -36,10 +36,10 @@ abstract class AlertBaseView : FrameLayout, OnConfirmListener {
 
     private fun createView() {
         val view = View.inflate(context, getLayoutId(), null)
-        val w = MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED)
-        val h = MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED)
-        view.measure(w, h)
-        val ww = view.measuredWidth
+//        val w = MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED)
+//        val h = MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED)
+//        view.measure(w, h)
+//        val ww = view.measuredWidth
         addView(view)
         if (isInEditMode) return
         initView()
