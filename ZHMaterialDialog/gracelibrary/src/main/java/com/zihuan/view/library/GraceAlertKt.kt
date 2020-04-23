@@ -94,12 +94,11 @@ class GraceAlertKt<T : AlertBaseView> {
     fun setView(view: T) {
         builder()
         mBaseDialog = view
-        val vv = mBaseDialog.getChildAt(0)
         mBaseDialog.post {
             val w = mBaseDialog.width
-            val w1 = vv.width
-            val w2 = vv.width
+
         }
+
         val activity = mContext as Activity
         val param = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
         val childParam = FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT)
