@@ -28,7 +28,7 @@ object GraceAlertManager {
     var buttonSize = 14f
 
     /** 是否可取消**/
-    var isCancelable = true
+//    var isCancelable = true
 
     /** 点击外部可取消**/
     var isCancelableTouchOutside = true

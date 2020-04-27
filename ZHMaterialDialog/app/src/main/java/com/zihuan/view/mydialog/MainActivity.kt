@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         }
         tv_2.setOnClickListener {
             graceAlert<SendView> {
-//                resetWidth = true
+                outside = false
             }.show()
         }
     }

@@ -48,25 +48,6 @@ class GraceAlertKt<T : AlertBaseView> {
     }
 
 
-    /***
-     * 是否可取消
-     */
-//    fun cancelable(isCancelable: Boolean = GraceAlertManager.isCancelable): GraceAlertKt<T> {
-//        dialog.setCancelable(isCancelable)
-//        return this
-//    }
-
-    private var mOutside: Boolean = GraceAlertManager.isCancelableTouchOutside
-
-    /**
-     * 点击外部区域是否可取消
-     */
-    fun outside(outside: Boolean = GraceAlertManager.isCancelableTouchOutside): GraceAlertKt<T> {
-        mOutside = outside
-        return this
-    }
-
-
     /**
      * 设置自定义view
      *
@@ -85,7 +66,7 @@ class GraceAlertKt<T : AlertBaseView> {
         mBaseDialog.layoutParams = childParam
         parentViewView = GraceAlertParentView(mContext, mBaseDialog, mAnimation).apply {
             setOnClickListener {
-                if (mOutside) {
+                if (mBaseDialog.outside) {
                     dismiss()
                 }
             }

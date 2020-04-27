@@ -80,6 +80,11 @@ abstract class AlertBaseView : CircleLayout, OnConfirmListener {
     protected var textNo = GraceAlertManager.textNo
     protected var textOther = GraceAlertManager.textOther
 
+    /**
+     * 点击外部区域是否可取消
+     */
+    var outside = GraceAlertManager.isCancelableTouchOutside
+
     internal var rootViewWidth = 0
     internal var rootViewHeight = 0
 

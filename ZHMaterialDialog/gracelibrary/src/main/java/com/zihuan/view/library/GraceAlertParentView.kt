@@ -24,11 +24,15 @@ class GraceAlertParentView : FrameLayout {
 
             override fun onAnimationEnd(animation: Animation?) {
                 visibility = View.GONE
-                isClickable = true
+                if (childView.outside) {
+                    isClickable = true
+                }
             }
 
             override fun onAnimationStart(animation: Animation?) {
-                isClickable = false
+                if (childView.outside) {
+                    isClickable = false
+                }
             }
 
         })
