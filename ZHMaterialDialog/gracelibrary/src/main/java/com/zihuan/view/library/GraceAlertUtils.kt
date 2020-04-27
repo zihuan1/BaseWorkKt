@@ -72,6 +72,7 @@ inline fun <reified T : AlertBaseView> Context.graceAlert(noinline init: T.() ->
             init(view)
         }
 
+
 inline fun <reified T : AlertBaseView> androidx.fragment.app.Fragment.graceAlert(noinline init: T.() -> Unit) = requireContext().graceAlert(init)
 
 inline fun <reified T : AlertBaseView> View.graceAlert(noinline init: T.() -> Unit) = context.graceAlert(init)

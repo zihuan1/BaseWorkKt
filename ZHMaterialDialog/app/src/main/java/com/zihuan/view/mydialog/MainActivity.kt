@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
                 .setCancelText("取消")
                 .setConfirmText("确认")
                 .setTitle("提示o(∩_∩)o ")
-                .setContent("你好")
+                .setContent("你好a")
 //                .show()
         mZDialog.setOnDialogListener(object : GraceAlert.OnDialogImp() {
 
