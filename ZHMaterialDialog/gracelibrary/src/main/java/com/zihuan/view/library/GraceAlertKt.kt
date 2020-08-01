@@ -16,16 +16,13 @@ import com.zihuan.view.library.GraceAlertUtils.AnimUpDown
 
 
 /**
- *  可配置的dialog,无侵入式代码
+ * 可配置的dialog,无侵入式代码
  * @author Zihuan
  */
 
 class GraceAlertKt<T : AlertBaseView> {
 
     private var animType = GraceAlertManager.defAnim
-
-    //    private lateinit var dialogBuild: AlertDialog.Builder
-//    private lateinit var dialog: Dialog
     private lateinit var mBaseDialog: T
     private var mContext: Context
 
@@ -33,27 +30,11 @@ class GraceAlertKt<T : AlertBaseView> {
         mContext = context
     }
 
+    private lateinit var parentViewView: GraceAlertParentView
+
     //默认为淡入淡出
     private lateinit var mAnimation: Array<Int>
     private fun builder() {
-//        dialogBuild = AlertDialog.Builder(mContext)
-//        dialogBuild.setView(mBaseDialog)
-//        dialog = dialogBuild.create().apply {
-//            window.attributes.windowAnimations = when (animType) {
-//                AnimLeft -> R.style.AnimLeft
-//                AnimRight -> R.style.AnimRight
-//                AnimUp -> R.style.AnimUp
-//                AnimDown -> R.style.AnimDown
-//                AnimLeftRight -> R.style.AnimLeftRight
-//                AnimUpDown -> R.style.AnimUpDown
-//                AnimFadeInOut -> R.style.AnimFadeInOut
-//                else -> R.style.AnimZoomInOut
-//            }
-//
-//            mBaseDialog?.dialog = this
-//            setCancelable(GraceAlertManager.isCancelable)
-//            setCanceledOnTouchOutside(GraceAlertManager.isCancelableTouchOutside)
-//        }
         mAnimation = when (animType) {
             AnimLeft -> arrayOf(R.anim.from_left, R.anim.to_left)
             AnimRight -> arrayOf(R.anim.from_right, R.anim.to_right)
@@ -67,26 +48,6 @@ class GraceAlertKt<T : AlertBaseView> {
     }
 
 
-    /***
-     * 是否可取消
-     */
-    fun cancelable(isCancelable: Boolean = GraceAlertManager.isCancelable): GraceAlertKt<T> {
-//        dialog.setCancelable(isCancelable)
-        return this
-    }
-
-    private var mOutside: Boolean = GraceAlertManager.isCancelableTouchOutside
-
-    /**
-     * 点击外部区域是否可取消
-     */
-    fun outside(outside: Boolean = GraceAlertManager.isCancelableTouchOutside): GraceAlertKt<T> {
-        mOutside = outside
-        return this
-    }
-
-    private lateinit var parentViewView: GraceAlertParentView
-
     /**
      * 设置自定义view
      *
@@ -94,22 +55,18 @@ class GraceAlertKt<T : AlertBaseView> {
     fun setView(view: T) {
         builder()
         mBaseDialog = view
-        val vv = mBaseDialog.getChildAt(0)
-        mBaseDialog.post {
-            val w = mBaseDialog.width
-            val w1 = vv.width
-            val w2 = vv.width
-        }
         val activity = mContext as Activity
         val param = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
-        val childParam = FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT)
+        val childParam = FrameLayout.LayoutParams(mBaseDialog.rootViewWidth, mBaseDialog.rootViewHeight)
         childParam.gravity = Gravity.CENTER
         childParam.leftMargin = mBaseDialog.marginLeft.toInt()
         childParam.rightMargin = mBaseDialog.marginRight.toInt()
+        childParam.topMargin = mBaseDialog.marginTop.toInt()
+        childParam.bottomMargin = mBaseDialog.marginBottom.toInt()
         mBaseDialog.layoutParams = childParam
         parentViewView = GraceAlertParentView(mContext, mBaseDialog, mAnimation).apply {
             setOnClickListener {
-                if (mOutside) {
+                if (mBaseDialog.outside) {
                     dismiss()
                 }
             }
