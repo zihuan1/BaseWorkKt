@@ -38,7 +38,6 @@ class GraceAlertView(context: Context) : AlertBaseView(context) {
     var okButtonShow = false
     var noButtonShow = false
     var otherButtonShow = false
-    private fun dip(value: Float) = (value * resources.displayMetrics.density)
 
     override fun getLayoutId() = R.layout.layout_def_dialog
     override fun initView() {
