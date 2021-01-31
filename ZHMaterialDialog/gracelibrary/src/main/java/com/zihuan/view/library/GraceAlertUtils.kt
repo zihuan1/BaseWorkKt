@@ -78,13 +78,20 @@ inline fun <reified T : AlertBaseView> Fragment.graceAlert(noinline init: T.() -
 
 inline fun <reified T : AlertBaseView> View.graceAlert(noinline init: T.() -> Unit) = context.graceAlert(init)
 
-/**默认的扩展方法*/
+/**默认弹窗扩展方法*/
 inline fun Context.defAlert(noinline init: GraceAlertView.() -> Unit) = graceAlert(init)
 
 inline fun Fragment.defAlert(noinline init: GraceAlertView.() -> Unit) = graceAlert(init)
 
 inline fun View.defAlert(noinline init: GraceAlertView.() -> Unit) = graceAlert(init)
 
+
+/**默认加载扩展方法*/
+inline fun Context.graceLoading(noinline init: GraceAlertView.() -> Unit) = graceAlert(init)
+
+inline fun Fragment.graceLoading(noinline init: GraceAlertView.() -> Unit) = graceAlert(init)
+
+inline fun View.graceLoading(noinline init: GraceAlertView.() -> Unit) = graceAlert(init)
 
 interface OnConfirmListener {
     fun onPositive(text: String, onClicked: () -> Unit)

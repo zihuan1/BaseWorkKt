@@ -47,6 +47,7 @@ class MainActivity : AppCompatActivity() {
                 outside = false
             }.show()
         }
+        test.startAnim()
     }
 
 

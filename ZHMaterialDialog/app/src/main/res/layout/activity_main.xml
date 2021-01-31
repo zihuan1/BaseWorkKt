@@ -22,4 +22,10 @@
         android:layout_marginTop="10dp"
         android:text="自定义" />
 
+    <com.zihuan.view.library.LoadingRing
+        android:id="@+id/test"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/bg_loading_cir_5" />
 </RelativeLayout>
