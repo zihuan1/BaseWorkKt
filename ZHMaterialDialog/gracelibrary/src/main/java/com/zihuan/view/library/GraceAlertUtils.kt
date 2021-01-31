@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.util.DisplayMetrics
 import android.view.View
+import androidx.fragment.app.Fragment
 
 
 /***
@@ -73,14 +74,14 @@ inline fun <reified T : AlertBaseView> Context.graceAlert(noinline init: T.() ->
         }
 
 
-inline fun <reified T : AlertBaseView> androidx.fragment.app.Fragment.graceAlert(noinline init: T.() -> Unit) = requireContext().graceAlert(init)
+inline fun <reified T : AlertBaseView> Fragment.graceAlert(noinline init: T.() -> Unit) = requireContext().graceAlert(init)
 
 inline fun <reified T : AlertBaseView> View.graceAlert(noinline init: T.() -> Unit) = context.graceAlert(init)
 
 /**默认的扩展方法*/
 inline fun Context.defAlert(noinline init: GraceAlertView.() -> Unit) = graceAlert(init)
 
-inline fun androidx.fragment.app.Fragment.defAlert(noinline init: GraceAlertView.() -> Unit) = graceAlert(init)
+inline fun Fragment.defAlert(noinline init: GraceAlertView.() -> Unit) = graceAlert(init)
 
 inline fun View.defAlert(noinline init: GraceAlertView.() -> Unit) = graceAlert(init)
 
