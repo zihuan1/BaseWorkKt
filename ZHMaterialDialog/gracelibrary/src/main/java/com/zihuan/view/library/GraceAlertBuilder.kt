@@ -20,7 +20,7 @@ import com.zihuan.view.library.GraceAlertUtils.AnimUpDown
  * @author Zihuan
  */
 
-class GraceAlertKt<T : AlertBaseView> {
+class GraceAlertBuilder<T : AlertBaseView> {
 
     private var animType = GraceAlertManager.defAnim
     private lateinit var mBaseDialog: T
@@ -86,7 +86,7 @@ class GraceAlertKt<T : AlertBaseView> {
     /**
      *显示dialog
      */
-    fun show(): GraceAlertKt<T> {
+    fun show(): GraceAlertBuilder<T> {
         mBaseDialog?.initData()
         parentViewView.show()
         return this
@@ -95,7 +95,7 @@ class GraceAlertKt<T : AlertBaseView> {
     /**
      *隐藏dialog
      */
-    fun dismiss(): GraceAlertKt<T> {
+    fun dismiss(): GraceAlertBuilder<T> {
         parentViewView.dismiss()
         return this
     }

@@ -6,8 +6,6 @@ import kotlinx.android.synthetic.main.dialog_send_view.view.*
 
 class SendView(context: Context) : AlertBaseView(context) {
 
-    var logisticsName = ""
-    var logisticsSku = ""
     override fun getLayoutId() = R.layout.dialog_send_view
 
     override fun initData() {

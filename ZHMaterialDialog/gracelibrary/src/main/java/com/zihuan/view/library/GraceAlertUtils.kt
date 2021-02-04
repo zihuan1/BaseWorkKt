@@ -67,7 +67,7 @@ enum class AlertType {
  * 自定义View
  */
 inline fun <reified T : AlertBaseView> Context.graceAlert(noinline init: T.() -> Unit) =
-        GraceAlertKt<T>(this).apply {
+        GraceAlertBuilder<T>(this).apply {
             val view = T::class.java.getDeclaredConstructor(Context::class.java).newInstance(this@graceAlert)
             setView(view)
             init(view)
@@ -87,11 +87,19 @@ inline fun View.defAlert(noinline init: GraceAlertView.() -> Unit) = graceAlert(
 
 
 /**默认加载扩展方法*/
-inline fun Context.graceLoading(noinline init: GraceAlertView.() -> Unit) = graceAlert(init)
+inline fun Context.loading(noinline init: GraceLoadingView.() -> Unit) = graceAlert(init)
+inline fun Context.loading(show: Boolean = true): GraceAlertBuilder<GraceLoadingView> {
+    var init: GraceLoadingView.() -> Unit = {
+        showText = show
+    }
+    return graceAlert(init)
+}
 
-inline fun Fragment.graceLoading(noinline init: GraceAlertView.() -> Unit) = graceAlert(init)
+inline fun Fragment.loading(noinline init: GraceLoadingView.() -> Unit) = graceAlert(init)
+inline fun Fragment.loading() = context!!.loading()
 
-inline fun View.graceLoading(noinline init: GraceAlertView.() -> Unit) = graceAlert(init)
+inline fun View.loading(noinline init: GraceLoadingView.() -> Unit) = graceAlert(init)
+inline fun View.loading() = context!!.loading()
 
 interface OnConfirmListener {
     fun onPositive(text: String, onClicked: () -> Unit)

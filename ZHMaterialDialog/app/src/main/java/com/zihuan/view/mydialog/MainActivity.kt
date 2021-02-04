@@ -1,6 +1,7 @@
 package com.zihuan.view.mydialog
 
 import android.os.Bundle
+import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.zihuan.view.library.*
 import kotlinx.android.synthetic.main.activity_main.*
@@ -39,15 +40,27 @@ class MainActivity : AppCompatActivity() {
                 toast("otherButton")
             }
         }
+        val loading = loading()
         tv_1.setOnClickListener {
-            dialog.show()
+            loading.show()
+            Handler().postDelayed({
+                loading.dismiss()
+            }, 2000)
         }
+
         tv_2.setOnClickListener {
             graceAlert<SendView> {
                 outside = false
             }.show()
         }
-        test.startAnim()
+        val aa = loading {
+            content = "加载中"
+            speed = 1000
+        }
+//                .show()
+
+
+//        test.startAnim()
     }
 
 
