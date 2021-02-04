@@ -46,6 +46,7 @@ class MainActivity : AppCompatActivity() {
             Handler().postDelayed({
                 loading.dismiss()
             }, 2000)
+            dialog.show()
         }
 
         tv_2.setOnClickListener {

@@ -108,7 +108,7 @@ abstract class AlertBaseView : CircleLayout, OnConfirmListener {
         textOk = text
         mZhListenerImp.setOkButton {
             onClicked()
-            onDismiss()
+            dialog?.dismiss()
         }
     }
 
@@ -116,7 +116,7 @@ abstract class AlertBaseView : CircleLayout, OnConfirmListener {
         textNo = text
         mZhListenerImp.setNoButton {
             onClicked()
-            onDismiss()
+            dialog?.dismiss()
         }
     }
 
@@ -124,11 +124,10 @@ abstract class AlertBaseView : CircleLayout, OnConfirmListener {
         textOther = text
         mZhListenerImp.setOtherButton {
             onClicked()
-            onDismiss()
+            dialog?.dismiss()
         }
     }
 
     open fun onDismiss() {
-        dialog?.dismiss()
     }
 }

@@ -34,12 +34,11 @@ class GraceLoadingView(context: Context) : AlertBaseView(context) {
 
     override fun initData() {
         loadingRing.startAnim()
-        Log.e("显示","显示")
+//        Log.e("显示", "显示")
     }
 
     override fun onDismiss() {
-        super.onDismiss()
         loadingRing.stopAnim()
-        Log.e("隐藏","隐藏")
+//        Log.e("隐藏", "隐藏")
     }
 }
