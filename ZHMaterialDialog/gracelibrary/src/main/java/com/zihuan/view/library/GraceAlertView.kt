@@ -23,7 +23,8 @@ class GraceAlertView(context: Context) : AlertBaseView(context) {
         get() = context.run { resources.getColor(field) }
     var buttonTextColor = GraceAlertManager.buttonColor
         get() = context.run { resources.getColor(field) }
-//    var bgcolor = GraceAlertManager.backgroundColor
+
+    //    var bgcolor = GraceAlertManager.backgroundColor
 //        get() = context.run { resources.getColor(field) }
     var titleColor = GraceAlertManager.titleColor
         get() = context.run { resources.getColor(field) }
@@ -38,7 +39,9 @@ class GraceAlertView(context: Context) : AlertBaseView(context) {
     var okButtonShow = false
     var noButtonShow = false
     var otherButtonShow = false
-
+    val tvOkButton by lazy { tv_ok }
+    val tvNoButton by lazy { tv_no }
+    val tvOtherButton by lazy { tv_other }
     override fun getLayoutId() = R.layout.layout_def_dialog
     override fun initView() {
         tv_ok.setOnClickListener {
