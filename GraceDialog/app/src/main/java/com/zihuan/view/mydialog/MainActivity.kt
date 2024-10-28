@@ -61,6 +61,10 @@ class MainActivity : AppCompatActivity() {
 //                .show()
 
 
+        graceAlert<CustomLayout> {
+
+        }.show()
+
 //        test.startAnim()
     }
 

@@ -48,6 +48,7 @@ class GraceAlertParentView : FrameLayout {
     fun show() {
         visibility = View.VISIBLE
         startAnimation(mShowAnimation)
+        mChildView.onShow()
     }
 
     fun dismiss() {

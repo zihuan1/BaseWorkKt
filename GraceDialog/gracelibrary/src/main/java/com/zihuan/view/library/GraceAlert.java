@@ -83,29 +83,11 @@ public class GraceAlert {
         TextView btnCancel = view.findViewById(R.id.tv_no);
         TextView tv_other = view.findViewById(R.id.tv_other);
         RelativeLayout rl_background = view.findViewById(R.id.rl_background);
-        final EditText editName = view.findViewById(R.id.et_name);
-        View title_lin = view.findViewById(R.id.title_lin);
         rl_background.setBackgroundColor(bgcolor);
         btnConfirm.setTextColor(buttonTextColor);
         btnCancel.setTextColor(buttonTextColor);
         txtTitle.setTextColor(buttonTextColor);
 
-        if (titleDivider) {
-            title_lin.setVisibility(View.VISIBLE);
-            title_lin.setBackgroundColor(dividerColor);
-        } else {
-            title_lin.setVisibility(View.GONE);
-        }
-        switch (type) {
-            case 0:
-                title_lin.setVisibility(View.VISIBLE);
-                editName.setVisibility(View.VISIBLE);
-                break;
-            case 1:
-                title_lin.setVisibility(View.GONE);
-                editName.setVisibility(View.GONE);
-                break;
-        }
 
         if (TextUtils.isEmpty(title)) {
             txtTitle.setVisibility(View.GONE);

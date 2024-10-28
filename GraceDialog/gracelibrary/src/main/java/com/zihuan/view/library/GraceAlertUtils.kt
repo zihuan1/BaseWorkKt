@@ -5,6 +5,8 @@ import android.content.Context
 import android.util.DisplayMetrics
 import android.view.View
 import androidx.fragment.app.Fragment
+import com.zihuan.view.library.source.GraceAlertView
+import com.zihuan.view.library.source.GraceLoadingView
 
 
 /***
@@ -53,17 +55,6 @@ object GraceAlertUtils {
 }
 
 /**
- * dialog类型
- */
-enum class AlertType {
-    /**默认类型*/
-    DEFAULT,
-
-    /**编辑类型*/
-    EDIT
-}
-
-/**
  * 自定义View
  */
 inline fun <reified T : AlertBaseView> Context.graceAlert(noinline init: T.() -> Unit) =
@@ -80,10 +71,6 @@ inline fun <reified T : AlertBaseView> View.graceAlert(noinline init: T.() -> Un
 
 /**默认弹窗扩展方法*/
 inline fun Context.defAlert(noinline init: GraceAlertView.() -> Unit) = graceAlert(init)
-
-inline fun Fragment.defAlert(noinline init: GraceAlertView.() -> Unit) = graceAlert(init)
-
-inline fun View.defAlert(noinline init: GraceAlertView.() -> Unit) = graceAlert(init)
 
 
 /**默认加载扩展方法*/

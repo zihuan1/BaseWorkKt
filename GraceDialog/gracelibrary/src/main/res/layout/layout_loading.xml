@@ -12,7 +12,7 @@
         android:background="@drawable/bg_loading_cir_5"
         android:orientation="vertical">
 
-        <com.zihuan.view.library.LoadingRing
+        <com.zihuan.view.library.source.LoadingRing
             android:id="@+id/loadingRing"
             android:layout_width="100dp"
             android:layout_height="100dp" />

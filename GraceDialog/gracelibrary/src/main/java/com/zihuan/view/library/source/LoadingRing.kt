@@ -1,15 +1,12 @@
-package com.zihuan.view.library
+package com.zihuan.view.library.source
 
 import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
-import android.util.Log
 import android.view.View
 import android.view.animation.LinearInterpolator
 import androidx.annotation.ColorInt
-import java.time.Duration
-import java.util.logging.Logger
 
 class LoadingRing @JvmOverloads constructor(context: Context?, attrs: AttributeSet? = null as AttributeSet?, defStyleAttr: Int = 0) : View(context, attrs, defStyleAttr) {
     private var mWidth = 0.0f

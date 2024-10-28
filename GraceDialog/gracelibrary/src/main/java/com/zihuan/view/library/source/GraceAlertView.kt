@@ -1,7 +1,11 @@
-package com.zihuan.view.library
+package com.zihuan.view.library.source
 
 import android.content.Context
-import kotlinx.android.synthetic.main.layout_def_dialog.view.*
+import android.widget.TextView
+import com.zihuan.view.library.AlertBaseView
+import com.zihuan.view.library.GraceAlertManager
+import com.zihuan.view.library.R
+import com.zihuan.view.library.ZVShow
 
 /**
  * 默认的view
@@ -13,19 +17,10 @@ class GraceAlertView(context: Context) : AlertBaseView(context) {
 
     //    内容
     var content = ""
-    var type = AlertType.DEFAULT
 
-    //是否显示标题线
-    var titleDivider = false
-
-    //线段颜色 背景色
-    var dividerColor = GraceAlertManager.textColor
-        get() = context.run { resources.getColor(field) }
     var buttonTextColor = GraceAlertManager.buttonColor
         get() = context.run { resources.getColor(field) }
 
-    //    var bgcolor = GraceAlertManager.backgroundColor
-//        get() = context.run { resources.getColor(field) }
     var titleColor = GraceAlertManager.titleColor
         get() = context.run { resources.getColor(field) }
 
@@ -36,14 +31,24 @@ class GraceAlertView(context: Context) : AlertBaseView(context) {
     var contentColor = GraceAlertManager.textColor
         get() = context.run { resources.getColor(field) }
 
+    private lateinit var tv_ok: TextView
+    private lateinit var tv_no: TextView
+    private lateinit var tv_other: TextView
+    private lateinit var tv_title: TextView
+    private lateinit var tv_content: TextView
+
+
     var okButtonShow = false
     var noButtonShow = false
     var otherButtonShow = false
-    val tvOkButton by lazy { tv_ok }
-    val tvNoButton by lazy { tv_no }
-    val tvOtherButton by lazy { tv_other }
     override fun getLayoutId() = R.layout.layout_def_dialog
     override fun initView() {
+        tv_ok = findViewById(R.id.tv_ok)
+        tv_no = findViewById(R.id.tv_no)
+        tv_other = findViewById(R.id.tv_other)
+        tv_title = findViewById(R.id.tv_title)
+        tv_content = findViewById(R.id.tv_content)
+
         tv_ok.setOnClickListener {
             if (mZhListenerImp.mPositiveListener != null) {
                 mZhListenerImp.performOk()
@@ -69,34 +74,18 @@ class GraceAlertView(context: Context) : AlertBaseView(context) {
     }
 
     override fun initData() {
-        when (type) {
-            AlertType.DEFAULT -> {
-                title_lin.visibility = GONE
-                et_name.visibility = GONE
-            }
-            AlertType.EDIT -> {
-                title_lin.visibility = VISIBLE
-                et_name.visibility = VISIBLE
-            }
-        }
         tv_title.setTextColor(titleColor)
         tv_content.setTextColor(contentColor)
         tv_no.setTextColor(buttonTextColor)
         tv_ok.setTextColor(buttonTextColor)
-        title_lin.setBackgroundColor(dividerColor)
-//        rl_background.setBackgroundColor(bgcolor)
         tv_title.text = title
         tv_content.text = content
         tv_title.textSize = titleSize
         tv_content.textSize = contentSize
         tv_ok.textSize = buttonSize
         tv_no.textSize = buttonSize
-        tv_other.textSize = buttonSize
         tv_ok.ZVShow { textOk.isNotEmpty() || okButtonShow }.text = textOk
         tv_no.ZVShow { textOk.isNotEmpty() || noButtonShow }.text = textNo
-        tv_other.ZVShow { textOther.isNotEmpty() || otherButtonShow }.text = textOther
-        title_lin.ZVShow { titleDivider }
     }
 
-    fun getEditText() = et_name.text.toString()
 }

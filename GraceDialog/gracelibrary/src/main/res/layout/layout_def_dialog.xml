@@ -16,19 +16,11 @@
         android:textColor="@color/orange"
         android:textSize="18sp" />
 
-    <View
-        android:id="@+id/title_lin"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@+id/tv_title"
-        android:background="@color/orange"
-        android:visibility="gone" />
-
     <RelativeLayout
         android:id="@+id/rl_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/title_lin"
+        android:layout_below="@+id/tv_title"
         android:visibility="visible">
 
         <TextView
@@ -39,13 +31,6 @@
             android:textColor="@color/orange"
             android:textSize="18sp" />
 
-        <EditText
-            android:id="@+id/et_name"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="5dp"
-            android:padding="5dp"
-            android:visibility="gone" />
     </RelativeLayout>
 
 

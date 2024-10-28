@@ -2,6 +2,7 @@ package com.zihuan.view.library
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 
 
 /**
@@ -9,7 +10,9 @@ import android.view.LayoutInflater
  */
 abstract class AlertBaseView : CircleLayout, OnConfirmListener {
     constructor(context: Context) : super(context) {
-        createView()
+        createLayoutForRes()?.let {
+            createView(it)
+        }
     }
 
     abstract fun getLayoutId(): Int
@@ -88,8 +91,18 @@ abstract class AlertBaseView : CircleLayout, OnConfirmListener {
     internal var rootViewWidth = 0
     internal var rootViewHeight = 0
 
-    private fun createView() {
+
+    private fun createLayoutForRes(): View? {
+        if (getLayoutId() == 0) return null
         val view = LayoutInflater.from(context).inflate(getLayoutId(), this, false)
+        return view
+    }
+
+    fun createLayoutCustom(view: View) {
+        createView(view)
+    }
+
+    private fun createView(view: View) {
         val viewParams = view.layoutParams
         setAttr(radianTopLeft, radianTopRight, radianBottomLeft, radianBottomRight)
         rootViewWidth = viewParams.width
@@ -128,6 +141,12 @@ abstract class AlertBaseView : CircleLayout, OnConfirmListener {
         }
     }
 
-    open fun onDismiss() {
+    open fun onShow() {
+
     }
+
+    open fun onDismiss() {
+
+    }
+
 }

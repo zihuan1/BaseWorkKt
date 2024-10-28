@@ -1,10 +1,10 @@
-package com.zihuan.view.library
+package com.zihuan.view.library.source
 
 import android.content.Context
-import android.util.Log
 import android.view.View
-import kotlinx.android.synthetic.main.layout_def_dialog.view.*
-import kotlinx.android.synthetic.main.layout_loading.view.*
+import android.widget.TextView
+import com.zihuan.view.library.AlertBaseView
+import com.zihuan.view.library.R
 
 /**
  * 默认的加载中的view
@@ -13,6 +13,9 @@ class GraceLoadingView(context: Context) : AlertBaseView(context) {
 
     override fun getLayoutId() = R.layout.layout_loading
 
+    private val tvContent by lazy { findViewById<TextView>(R.id.tvContent) }
+
+    private val loadingRing by lazy { findViewById<LoadingRing>(R.id.loadingRing) }
     var showText = true
         set(value) {
             tvContent.visibility = if (value) View.VISIBLE else View.GONE
